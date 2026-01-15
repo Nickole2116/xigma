@@ -1,2 +1,1 @@
-# xigma
-DEMO Product Tracking System 
+# Xigma 2.0 + Telegram API

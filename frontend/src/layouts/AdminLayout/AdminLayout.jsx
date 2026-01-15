@@ -1,7 +1,9 @@
+import { Outlet } from "react-router-dom";
+
 const AdminLayout = () => {
     
     return <>
-        this is test
+        <Outlet/>
     </>;
 };
   

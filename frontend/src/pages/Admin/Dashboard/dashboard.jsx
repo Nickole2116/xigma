@@ -1,7 +1,7 @@
 const Dashboard = () => {
     
     return <>
-        this is test
+        this is test dashboard
     </>;
 };
   

@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
 import { getUsers } from '@/services/modules/user.service'
 
+import { GlobalStoreProvider } from "@/hooks/GlobalStore.context";
+
+
 const AdminLayout = () => {
   const { t, i18n } = useTranslation()
 
@@ -42,8 +45,10 @@ const AdminLayout = () => {
           ))}
         </ul>
       )}
-
+      <GlobalStoreProvider>
       <Outlet />
+      </GlobalStoreProvider>
+      
     </div>
   )
 }

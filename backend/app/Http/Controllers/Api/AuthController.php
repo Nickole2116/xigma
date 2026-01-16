@@ -15,7 +15,7 @@ class AuthController extends Controller
             ['email' => 'nickoletan12@gmail.com',
             'name' => 'Nickole Tan'],
             ['email' => 'nickoletan12@gmail.com',
-            'name' => 'Nickole Tan']
+            'name' => 'Nickole2 Tan']
         ]);
     }
     public function login(Request $request)

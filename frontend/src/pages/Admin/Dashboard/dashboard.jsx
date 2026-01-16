@@ -6,11 +6,11 @@ const Dashboard = () => {
 
     const sendMessage = async () => {
         try {
-          const res = await fetch('http://localhost:8000/api/telegram/send', {
+          const res = await fetch('http://localhost:8000/api/telegram/bot/send', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              chat_id: 'YOUR_CHAT_ID',
+              chat_id: '5964748247',
               text: 'Hello from React + Laravel!',
             }),
           });
@@ -23,7 +23,7 @@ const Dashboard = () => {
 
     const getUpdates = async () => {
         try {
-          const res = await fetch('http://localhost:8000/api/telegram/updates');
+          const res = await fetch('http://localhost:8000/api/telegram/bot/updates');
           const data = await res.json();
           console.log(data);
         } catch (err) {
@@ -33,7 +33,7 @@ const Dashboard = () => {
 
     const getTelegramMe = async () => {
         try {
-          const res = await fetch('http://localhost:8000/api/telegram/getMe');
+          const res = await fetch('http://localhost:8000/api/telegram/bot/getMe');
           const data = await res.json();
           console.log(data);
         } catch (err) {
@@ -44,6 +44,7 @@ const Dashboard = () => {
     useEffect(() => {
         getUpdates();
         getTelegramMe();
+        sendMessage();
     }, [])
 
     return <>

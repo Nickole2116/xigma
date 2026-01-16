@@ -1,14 +1,14 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\TelegramController;
+use App\Http\Controllers\Api\TelegramBotController;
 
 use Illuminate\Http\Request;
 
 
-Route::post('/telegram/send', [TelegramController::class, 'sendMessage']);
-Route::get('/telegram/updates', [TelegramController::class, 'getUpdates']);
-Route::get('/telegram/getMe', [TelegramController::class, 'getOwnInfo']);
+Route::post('/telegram/bot/send', [TelegramBotController::class, 'sendMessage']);
+Route::get('/telegram/bot/updates', [TelegramBotController::class, 'getUpdates']);
+Route::get('/telegram/bot/getMe', [TelegramBotController::class, 'getOwnInfo']);
 
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');

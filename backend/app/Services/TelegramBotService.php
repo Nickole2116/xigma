@@ -4,7 +4,7 @@ namespace App\Services;
 
 use GuzzleHttp\Client;
 
-class TelegramService
+class TelegramBotService
 {
     protected $token;
     protected $apiUrl;

@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Services\TelegramService;
+use App\Services\TelegramBotService;
 
-class TelegramController extends Controller
+class TelegramBotController extends Controller
 {
     protected $telegram;
 
-    public function __construct(TelegramService $telegram)
+    public function __construct(TelegramBotService $telegram)
     {
         $this->telegram = $telegram;
     }

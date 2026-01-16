@@ -2,13 +2,18 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\TelegramBotController;
+use App\Http\Controllers\Api\TelegramClientController;
 
 use Illuminate\Http\Request;
 
-
+// Telegram Bot API - Bot Reply User
 Route::post('/telegram/bot/send', [TelegramBotController::class, 'sendMessage']);
 Route::get('/telegram/bot/updates', [TelegramBotController::class, 'getUpdates']);
 Route::get('/telegram/bot/getMe', [TelegramBotController::class, 'getOwnInfo']);
+
+Route::post('/telegram/client/send', [TelegramClientController::class, 'send']);
+Route::get('/telegram/client/history', [TelegramClientController::class, 'history']);
+Route::get('/telegram/client/me', [TelegramClientController::class, 'me']);
 
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');

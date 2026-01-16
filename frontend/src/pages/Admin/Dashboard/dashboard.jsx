@@ -1,50 +1,18 @@
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
 import { useEffect } from "react";
+import { getTelegramProfile, getTelegramUpdates } from "@/services/modules/telegramclient.service";
 
 const Dashboard = () => {
     const { theme, setTheme, isLogined, setIsLogined } = useGlobalStore();
 
-    const sendMessage = async () => {
-        try {
-          const res = await fetch('http://localhost:8000/api/telegram/bot/send', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              chat_id: '5964748247',
-              text: 'Hello from React + Laravel!',
-            }),
-          });
-          const data = await res.json();
-          console.log(data);
-        } catch (err) {
-          console.error(err);
-        }
-    };
 
-    const getUpdates = async () => {
-        try {
-          const res = await fetch('http://localhost:8000/api/telegram/bot/updates');
-          const data = await res.json();
-          console.log(data);
-        } catch (err) {
-          console.error(err);
-        }
-    };
-
-    const getTelegramMe = async () => {
-        try {
-          const res = await fetch('http://localhost:8000/api/telegram/bot/getMe');
-          const data = await res.json();
-          console.log(data);
-        } catch (err) {
-          console.error(err);
-        }
-    };
+    const loadMessages = async () => {
+      const data = await getTelegramUpdates()
+      console.log(data)
+    }
 
     useEffect(() => {
-        getUpdates();
-        getTelegramMe();
-        sendMessage();
+        loadMessages();
     }, [])
 
     return <>

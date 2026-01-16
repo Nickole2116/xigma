@@ -9,6 +9,13 @@ use Str;
 
 class AuthController extends Controller
 {
+    public function index(Request $request)
+    {
+        return response()->json([
+            ['email' => 'nickoletan12@gmail.com',
+            'name' => 'Nickole Tan']
+        ]);
+    }
     public function login(Request $request)
     {
         if (!Auth::attempt($request->only('email', 'password'))) {

@@ -5,6 +5,7 @@ const adminRoutes = {
     path: '/admin', 
     element: <AdminLayout />,
     children: [
+        { path: '', element: <Dashboard/> },
         { path: 'dashboard', element: <Dashboard/> },
         //{ path: '/products', element: <Products /> },
     ],

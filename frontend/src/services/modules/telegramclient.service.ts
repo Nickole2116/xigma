@@ -15,8 +15,8 @@ export const sendTelegramMessage = (chat_id, text) => {
 /**
  * Get Telegram Client updates
  */
-export const getTelegramUpdates = () => {
-  return api.get('/telegram/client/history')
+export const getTelegramUpdates = (peer) => {
+  return api.get('/telegram/client/history?peer='+peer)
 }
 
 /**

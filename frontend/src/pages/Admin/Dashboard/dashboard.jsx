@@ -7,7 +7,7 @@ const Dashboard = () => {
 
 
     const loadMessages = async () => {
-      const data = await getTelegramUpdates()
+      const data = await getTelegramUpdates('@corepixelkyo')
       console.log(data)
     }
 

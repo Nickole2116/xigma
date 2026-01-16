@@ -1,48 +1,51 @@
-import { Outlet } from "react-router-dom";
-import { useTranslation } from 'react-i18next';
-import { useState, useEffect } from "react";
-import { getUsers, getUser, createUser, updateUser, deleteUser } from '@/services/modules/user.service'
+import { Outlet, Route, Link } from "react-router-dom"
+import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
+import { getUsers } from '@/services/modules/user.service'
 
 const AdminLayout = () => {
-    const { t, i18n } = useTranslation()
-    const [users, setUsers] = useState([])
-    const [loading, setLoading] = useState(false) // 加 loading 状态
+  const { t, i18n } = useTranslation()
 
-    const fetchUsers = async () => {
-        setLoading(true)
-        try {
-          const res = await getUsers()
-          setUsers(res)
-        } catch (err) {
-          console.error('Failed to fetch users:', err)
-        } finally {
-          setLoading(false)
-        }
-    }
+  const { data: users = [], isLoading, isError, refetch } = useQuery({
+    queryKey: ['users'],
+    queryFn: getUsers,
+    staleTime: 5000,
+    refetchInterval: 5000,
+    refetchOnWindowFocus: true,
+    retry: 3,
+  })
 
-    useEffect(() => {
-        fetchUsers();
-    }, [])
+  return (
+    <div>
+      <h1>{t('welcome')}</h1>
 
-    return <>
-        {t('welcome')}
+      <Link to="/admin">Go to Users</Link>
+      <Link to="/user">Go to Users</Link>
+
+      <div style={{ marginBottom: '1rem' }}>
         <button onClick={() => i18n.changeLanguage('en')}>EN</button>
         <button onClick={() => i18n.changeLanguage('zh')}>中文</button>
         <button onClick={() => i18n.changeLanguage('ms')}>BM</button>
+        <button onClick={() => refetch()}>Refetch Now</button>
+      </div>
 
-        {loading ? (
+      {isLoading ? (
         <p>Loading users...</p>
+      ) : isError ? (
+        <p>Error loading users</p>
       ) : (
         <ul>
           {users.map((u) => (
-            <li key={u.id}>
+            <li key={u.name}>
               {u.name} ({u.email})
             </li>
           ))}
         </ul>
       )}
-        <Outlet/>
-    </>;
-};
-  
-export default AdminLayout;
+
+      <Outlet />
+    </div>
+  )
+}
+
+export default AdminLayout

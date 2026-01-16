@@ -13,6 +13,8 @@ class AuthController extends Controller
     {
         return response()->json([
             ['email' => 'nickoletan12@gmail.com',
+            'name' => 'Nickole Tan'],
+            ['email' => 'nickoletan12@gmail.com',
             'name' => 'Nickole Tan']
         ]);
     }

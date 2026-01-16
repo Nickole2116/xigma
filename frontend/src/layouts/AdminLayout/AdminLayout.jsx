@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getUsers } from '@/services/modules/user.service'
 
 import { GlobalStoreProvider } from "@/hooks/GlobalStore.context";
-
+import styles from './AdminLayout.module.scss';
 
 const AdminLayout = () => {
   const { t, i18n } = useTranslation()
@@ -22,7 +22,7 @@ const AdminLayout = () => {
     <div>
       <h1>{t('welcome')}</h1>
 
-      <Link to="/admin">Go to Users</Link>
+      <Link to="/admin" className={`${styles.btn} sub1`}>Go to Users <i class={`${styles.icon}`}>88</i></Link>
       <Link to="/user">Go to Users</Link>
 
       <div style={{ marginBottom: '1rem' }}>

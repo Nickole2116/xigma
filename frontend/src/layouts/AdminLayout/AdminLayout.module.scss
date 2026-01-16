@@ -1,0 +1,12 @@
+.btn {
+    background-color: red;
+    padding: 10px 20px;
+  
+    &:hover {
+      background-color: darken(red, 10%);
+    }
+  
+    .icon {
+      margin-left: 20px;
+    }
+}

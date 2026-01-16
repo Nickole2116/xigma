@@ -22,7 +22,7 @@ const AdminLayout = () => {
     <div>
       <h1>{t('welcome')}</h1>
 
-      <Link to="/admin" className={`${styles.btn} sub1`}>Go to Users <i class={`${styles.icon}`}>88</i></Link>
+      <Link to="/admin" className={`${styles.btn} sub1`}>Go to Users <i className={`${styles.icon}`}>88</i></Link>
       <Link to="/user">Go to Users</Link>
 
       <div style={{ marginBottom: '1rem' }}>

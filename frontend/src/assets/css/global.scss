@@ -1,6 +1,10 @@
 @use './variables' as *;
+@use './mixins' as *;
 
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
+}
+.flex {
+  @include flex-center;
 }

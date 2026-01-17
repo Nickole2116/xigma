@@ -15,6 +15,16 @@ class TelegramClientController extends Controller
         $this->telegram = $telegram;
     }
 
+    public function login(Request $request) {
+        
+            $qr = $this->telegram->telegramLogin();
+            return response()->json([
+                'isLogined' => false,
+                'requestQR' => $qr['link']
+            ]);
+        
+    }
+
     public function send(Request $request)
     {
         return response()->json(

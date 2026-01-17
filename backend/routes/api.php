@@ -11,6 +11,8 @@ Route::post('/telegram/bot/send', [TelegramBotController::class, 'sendMessage'])
 Route::get('/telegram/bot/updates', [TelegramBotController::class, 'getUpdates']);
 Route::get('/telegram/bot/getMe', [TelegramBotController::class, 'getOwnInfo']);
 
+Route::post('/telegram/client/login', [TelegramClientController::class, 'login']);
+Route::get('/telegram/client/login', [TelegramClientController::class, 'login']);
 Route::post('/telegram/client/send', [TelegramClientController::class, 'send']);
 Route::get('/telegram/client/history', [TelegramClientController::class, 'history']);
 Route::get('/telegram/client/me', [TelegramClientController::class, 'me']);

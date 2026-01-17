@@ -4,58 +4,101 @@ namespace App\Services;
 
 use danog\MadelineProto\API;
 use danog\MadelineProto\Settings;
+use Log;
 
 class TelegramClientService
 {
     protected API $client;
+    protected string $sessionPath;
 
     public function __construct()
     {
-        $sessionPath = storage_path('telegram/session.madeline');
+        $this->sessionPath = storage_path('telegram/session.madeline');
 
-        // 确保 storage/telegram 存在
-        if (!file_exists(dirname($sessionPath))) {
-            mkdir(dirname($sessionPath), 0775, true);
+        // 确保目录存在
+        if (!is_dir(dirname($this->sessionPath))) {
+            mkdir(dirname($this->sessionPath), 0775, true);
         }
 
-        // ✅ 正确：使用 Settings 对象
-        $settings = new Settings;
-
+        $settings = new Settings();
         $settings->getAppInfo()
-            ->setApiId(env('TELEGRAM_CLIENT_API_ID'))
+            ->setApiId((int) env('TELEGRAM_CLIENT_API_ID'))
             ->setApiHash(env('TELEGRAM_CLIENT_API_HASH'));
 
-        $this->client = new API($sessionPath, $settings);
+        $this->client = new API($this->sessionPath, $settings);
 
-        // 第一次会要求 login
-        $this->client->start(false);
+        // ⚠️ 不要在这里强制 start
+        // 由 controller 决定要不要 login
     }
 
-    public function sendMessage($peer, $message)
+    /**
+     * 是否已登录
+     */
+    public function isLoggedIn(): bool
     {
+        try {
+            $this->client->start(false);
+            $this->client->getSelf();
+            return true;
+        } catch (\Throwable $e) {
+            return false;
+        }
+    }
+
+    /**
+     * 生成 Telegram QR Code 登录
+     */
+    public function telegramLogin(): array
+    {
+        // $this->client->start(false);
+
+        $qr = $this->client->qrLogin();
+
+        return [
+            'link' => $qr->link
+        ];
+    }
+
+    /**
+     * 发送消息
+     */
+    public function sendMessage($peer, string $message)
+    {
+        $this->client->start();
+
         return $this->client->messages->sendMessage([
             'peer'    => $peer,
             'message' => $message,
         ]);
     }
 
-    public function getMessages($peer, $limit = 20)
+    /**
+     * 获取最近消息
+     */
+    public function getMessages($peer, int $limit = 20)
     {
+        $this->client->start();
+
         return $this->client->messages->getHistory([
             'peer'  => $peer,
             'limit'=> $limit,
         ]);
     }
 
-    public function getAllMessages($peer)
+    /**
+     * 获取所有消息（分页）
+     */
+    public function getAllMessages($peer): array
     {
+        $this->client->start();
+
         $all = [];
         $offsetId = 0;
 
         while (true) {
             $history = $this->client->messages->getHistory([
-                'peer' => $peer,
-                'limit' => 100,
+                'peer'      => $peer,
+                'limit'     => 100,
                 'offset_id' => $offsetId,
             ]);
 
@@ -73,8 +116,12 @@ class TelegramClientService
         return $all;
     }
 
+    /**
+     * 获取自己 profile
+     */
     public function getMe()
     {
+        $this->client->start();
         return $this->client->getSelf();
     }
 }

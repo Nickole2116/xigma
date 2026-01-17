@@ -5,6 +5,15 @@ import api from '../api'
  * @param {string|number} chat_id
  * @param {string} text
  */
+export const loginTelegramClient = () => {
+  return api.get('/telegram/client/login')
+}
+
+/**
+ * Send message via Telegram
+ * @param {string|number} chat_id
+ * @param {string} text
+ */
 export const sendTelegramMessage = (chat_id, text) => {
   return api.post('/telegram/client/send', {
     chat_id,

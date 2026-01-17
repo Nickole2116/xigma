@@ -2,8 +2,6 @@ import api from '../api'
 
 /**
  * Send message via Telegram
- * @param {string|number} chat_id
- * @param {string} text
  */
 export const loginTelegramClient = () => {
   return api.get('/telegram/client/login')

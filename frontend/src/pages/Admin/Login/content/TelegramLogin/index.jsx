@@ -1,7 +1,5 @@
 import { useState } from "react";
 import TelegramLoginButton from "./TelegramLoginButton";
-import mod from '../../login.module.scss';
-
 
 export const TelegramLogin = () => {
 

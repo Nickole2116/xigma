@@ -1,4 +1,4 @@
-import mod from './login.module.scss';
+import './login.scss';
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
 
 //Content
@@ -12,7 +12,7 @@ export const Login = () => {
 
 
     return <>
-        <div className={`${mod.fullpage} flex-center ${themeMode}`}>
+        <div className={`fullpage flex-center ${themeMode}`}>
             {/*<TelegramLogin />*/}
             <ManualLogin />
         </div>

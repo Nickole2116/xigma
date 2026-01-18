@@ -23,9 +23,12 @@ export const TelegramLogin = () => {
                     setUser(user);
                 }}
             />
-        ) : (
-            <img src={`/images/shared/telegram.png`} className={mod.animatedThumbnail}/>
-        )}
+        ) : (<>
+            <div id="telegram-login-container" class="telegram-login">
+                <img src={`/images/shared/telegram.png`} className={`img-icon`}/>
+                <span>Login with Telegram</span>
+            </div>
+        </>)}
         
     </>;
 }

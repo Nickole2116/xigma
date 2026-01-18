@@ -1,7 +1,8 @@
 :root[data-theme="theme1"][data-mode="day-mode"] {
-    --primary: #8e44ad;
-    --secondary: #6c5ce7;
-    --third: #00b894;
+    --font: "Montserrat", sans-serif;
+    --primary: #2e2e2e;
+    --secondary: #0018a2;
+    --third: #5163ca;
     --success: #00b894;
     --success-light: #55efc4;
     --success-dark: #019875;
@@ -27,7 +28,9 @@
     --text-pending-dark: #e1b800;
 }
 :root[data-theme="theme1"][data-mode="night-mode"] {
-    --primary: #8e44ad;
+    --font: "Quicksand", sans-serif;
+
+    --primary: #2e2e2e;
     --secondary: #6c5ce7;
     --third: #00b894;
     --success: #00b894;

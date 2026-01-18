@@ -14,7 +14,6 @@ export const GlobalStoreProvider = ({ children }) => {
     /** CHECK day/night Mode */
     const now = new Date();
     const hours = now.getHours();
-
     if (hours >= 19) {
       setThemeMode("night-mode");
     } else {

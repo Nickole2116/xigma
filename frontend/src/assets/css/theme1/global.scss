@@ -6,8 +6,8 @@ body {
   font-family: system-ui, sans-serif;
   scroll-behavior: smooth;
   line-height: 1;
-  background: $bg;
-  color: $text;
+  background: var(--bg);
+  color: var(--text);
 }
 * {
   line-height: 1 !important;
@@ -17,11 +17,11 @@ body {
   @include justify-center;
 }
 .text-main {
-  color: $text;
+  color: var(--text);
 }
 .text-sub {
-  color: $text-sub;
+  color: var(--text-sub);
 }
 .text-sub-secondary {
-  color: $text-sub-secondary;
+  color: var(--text-sub-secondary);
 }

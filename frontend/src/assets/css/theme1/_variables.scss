@@ -1,31 +1,58 @@
-/* Theme Colors - Night Mode */
-$primary: red;
-$secondary: red;
-$third: red;
-$success: red;
-$success-light: red;
-$success-dark: red;
-$fail: red;
-$fail-light: red;
-$fail-dark: red;
-$pending: red;
-$pending-light: red;
-$pending-dark: red;
-$secondary: red;
-$secondary: red;
+:root[data-theme="theme1"][data-mode="day-mode"] {
+    --primary: #8e44ad;
+    --secondary: #6c5ce7;
+    --third: #00b894;
+    --success: #00b894;
+    --success-light: #55efc4;
+    --success-dark: #019875;
+    --fail: #d63031;
+    --fail-light: #ff7675;
+    --fail-dark: #b71c1c;
+    --pending: #fdcb6e;
+    --pending-light: #ffeaa7;
+    --pending-dark: #e1b800;
 
-$bg: #000;
-$text: #fff;
-$text-sub: grey;
-$text-sub-secondary: #000;
-$text-success: green;
-$text-success-light: green;
-$text-success-dark: green;
-$text-fail: red;
-$text-fail-light: red;
-$text-fail-dark: red;
-$text-pending: yellow;
-$text-pending-light: yellow;
-$text-pending-dark: yellow;
+    --bg: #ececec;
+    --text: #121212;
+    --text-sub: #a0a0a0;
+    --text-sub-secondary: #363636;
+    --text-success: #00b894;
+    --text-success-light: #55efc4;
+    --text-success-dark: #019875;
+    --text-fail: #d63031;
+    --text-fail-light: #ff7675;
+    --text-fail-dark: #b71c1c;
+    --text-pending: #fdcb6e;
+    --text-pending-light: #ffeaa7;
+    --text-pending-dark: #e1b800;
+}
+:root[data-theme="theme1"][data-mode="night-mode"] {
+    --primary: #8e44ad;
+    --secondary: #6c5ce7;
+    --third: #00b894;
+    --success: #00b894;
+    --success-light: #55efc4;
+    --success-dark: #019875;
+    --fail: #d63031;
+    --fail-light: #ff7675;
+    --fail-dark: #b71c1c;
+    --pending: #fdcb6e;
+    --pending-light: #ffeaa7;
+    --pending-dark: #e1b800;
 
-/* END Theme Colors - Night Mode */
+    --bg: #121212;
+    --text: #ececec;
+    --text-sub: #a0a0a0;
+    --text-sub-secondary: #363636;
+    --text-success: #00b894;
+    --text-success-light: #55efc4;
+    --text-success-dark: #019875;
+    --text-fail: #d63031;
+    --text-fail-light: #ff7675;
+    --text-fail-dark: #b71c1c;
+    --text-pending: #fdcb6e;
+    --text-pending-light: #ffeaa7;
+    --text-pending-dark: #e1b800;
+}
+  
+

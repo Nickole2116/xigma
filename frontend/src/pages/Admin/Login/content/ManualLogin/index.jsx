@@ -1,9 +1,9 @@
-import { ModalButton } from "../../../../Shared";
+import { AuthButton } from "../../../../Shared";
 export const ManualLogin = () => {
 
     return <>
     SS Man
-    <ModalButton>dd</ModalButton>
+    <AuthButton>dd</AuthButton>
     </>;
 }
 

@@ -1,14 +1,17 @@
+import '@/assets/css/theme1/global.scss';
+
+import { useEffect } from 'react';
 import { Outlet, Route, Link } from "react-router-dom"
 import { useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
 import { gets } from '@/services/modules/admin.service'
 
-import { GlobalStoreProvider } from "@/hooks/GlobalStore.context";
-import '@/assets/css/theme1/global.scss';
+import { GlobalStoreProvider, useGlobalStore } from "@/hooks/GlobalStore.context";
 import mod from './AdminLayout.module.scss';
 
 const AdminLayout = () => {
   const { t, i18n } = useTranslation()
+  const { theme, setTheme, isLogined, setIsLogined, themeMode, setThemeMode } = useGlobalStore();
 
   /*const { data: users = [], isLoading, isError, refetch } = useQuery({
     queryKey: ['users'],
@@ -19,8 +22,21 @@ const AdminLayout = () => {
     retry: 3,
   })*/
 
+  useEffect(() => {
+  
+    document.documentElement.setAttribute(
+      'data-theme',
+      theme
+    );
+
+    document.documentElement.setAttribute(
+      'data-mode',
+      themeMode
+    )
+  }, [themeMode, theme])
+
   return (
-    <div className={mod.themepage}>
+    <div className={`${mod.themepage}`}>
       {/*
       <div style={{ marginBottom: '1rem' }}>
         <button onClick={() => i18n.changeLanguage('en')}>EN</button>
@@ -28,9 +44,7 @@ const AdminLayout = () => {
         <button onClick={() => i18n.changeLanguage('ms')}>BM</button>
       </div>
       */}
-      <GlobalStoreProvider>
         <Outlet />
-      </GlobalStoreProvider>
     </div>
   )
 }

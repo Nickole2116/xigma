@@ -1,5 +1,10 @@
 import AppRoutes from './routes';
+import { GlobalStoreProvider } from "@/hooks/GlobalStore.context";
 
 export default function App() {
-  return <AppRoutes />;
+  return (
+    <GlobalStoreProvider>
+      <AppRoutes />
+    </GlobalStoreProvider>
+  );
 }

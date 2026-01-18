@@ -1,0 +1,27 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  scroll-behavior: smooth;
+  line-height: 1;
+  background: $bg;
+  color: $text;
+}
+* {
+  line-height: 1 !important;
+}
+.flex-center {
+  @include flex-center;
+  @include justify-center;
+}
+.text-main {
+  color: $text;
+}
+.text-sub {
+  color: $text-sub;
+}
+.text-sub-secondary {
+  color: $text-sub-secondary;
+}

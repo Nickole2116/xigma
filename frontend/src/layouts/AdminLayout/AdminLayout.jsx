@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 import { gets } from '@/services/modules/admin.service'
 
 import { GlobalStoreProvider } from "@/hooks/GlobalStore.context";
-import '@/assets/css/global.scss';
+import '@/assets/css/theme1/global.scss';
 import mod from './AdminLayout.module.scss';
 
 const AdminLayout = () => {
@@ -20,7 +20,7 @@ const AdminLayout = () => {
   })*/
 
   return (
-    <div className={`main-full-page`}>
+    <div className={mod.themepage}>
       {/*
       <div style={{ marginBottom: '1rem' }}>
         <button onClick={() => i18n.changeLanguage('en')}>EN</button>

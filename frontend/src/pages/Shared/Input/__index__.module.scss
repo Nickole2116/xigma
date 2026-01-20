@@ -1,5 +1,49 @@
 
 /* Auth */
-.auth {
-    color: red;
+.AuthInput {
+    background-color: var(--form-input-full-bg);
+    & label {
+        background: var(--form-label-bg);
+        color: var(--form-label-color);
+        font-size: var(--form-label-text);
+        font-weight: var(--form-label-weight);
+    }
+    & input {
+        outline: none;
+        background: var(--form-input-bg);
+        color: var(--form-input-color);
+        font-size: var(--form-input-text);
+        font-weight: var(--form-input-weight);
+
+        &::placeholder {
+            background: var(--form-input-placeholder-bg);
+            color: var(--form-input-placeholder-color);
+            font-size: var(--form-input-placeholder-text);
+            font-weight: var(--form-input-placeholder-weight);
+        }
+    }
+    & button {
+        cursor: pointer;
+        background: var(--form-input-hint-bg);
+        color: var(--form-input-hint-color);
+        & i {
+            font-size: var(--form-input-hint-text);
+            color: var(--form-input-hint-color);
+        }
+        & span {
+            font-size: var(--form-input-hint-text);
+            color: var(--form-input-hint-color);
+            font-weight: var(--form-input-hint-weight);
+        }
+    }
+}
+
+.AuthInputLabel {
+    & i {}
+    & span {} 
+}
+
+.AuthInputError {
+    & i {}
+    & span {} 
 }

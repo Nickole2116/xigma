@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { AuthButton, AuthInput, SubmitButton } from '@/pages/Shared';
-import { manualLoginSchema } from '@/validations/manualLogin.schema';
+import { ManualLoginSchema } from '@/validations/ManualLogin.schema';
 
 export const ManualLogin = () => {
   const {
@@ -11,7 +11,7 @@ export const ManualLogin = () => {
     watch,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(manualLoginSchema),
+    resolver: zodResolver(ManualLoginSchema),
   });
 
   const username = watch('username');
@@ -23,16 +23,14 @@ export const ManualLogin = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <AuthInput
-        label="Username"
+        type="password"
+        isPassword={true}
+        InternalLabel="Username"
         placeholder="Enter Permission's Username"
-        error={errors.username?.message}
+        Error={errors.username?.message}
         {...register('username')}
       />
-
-      {/* 👇 live preview */}
-      <p style={{ marginTop: '8px', fontSize: '12px' }}>
-        Current input: <strong>{username || '-'}</strong>
-      </p>
+      {/*<strong>{username || '-'}</strong>*/}
 
       <SubmitButton type="submit">Login</SubmitButton>
     </form>

@@ -15,6 +15,7 @@ export const Login = () => {
         <div className={`fullpage flex-center ${themeMode}`}>
             {/*<TelegramLogin />*/}
             <ManualLogin />
+            {/*<Checks />*/}
         </div>
     </>;
 }

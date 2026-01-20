@@ -1,3 +1,4 @@
+import '@/assets/css/mdi.css';
 import '@/assets/css/theme1/global.scss';
 
 import { useEffect } from 'react';

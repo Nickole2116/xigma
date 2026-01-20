@@ -1,8 +1,8 @@
 :root[data-theme="theme1"][data-mode="day-mode"] {
-    --font: "Montserrat", sans-serif;
+    --font: "Quicksand", sans-serif;
     --primary: #2e2e2e;
-    --secondary: #0018a2;
-    --third: #5163ca;
+    --secondary: #1b0064;
+    --third: #629aa9;
     --success: #00b894;
     --success-light: #55efc4;
     --success-dark: #019875;
@@ -26,6 +26,28 @@
     --text-pending: #fdcb6e;
     --text-pending-light: #ffeaa7;
     --text-pending-dark: #e1b800;
+
+    --form-input-full-bg: #e2e2e2;
+    --form-label-text: 1rem;
+    --form-label-color: #000;
+    --form-label-bg: transparent;
+    --form-label-weight: 500
+    --form-input-text: 1rem
+    --form-input-bg: transparent;
+    --form-input-weight: 600;
+    --form-input-color: #000;
+    --form-input-placeholder-text: 1rem;
+    --form-input-placeholder-bg: transparent;
+    --form-input-placeholder-weight: 500;
+    --form-input-placeholder-color: #000;
+    --form-input-hint-text: 1rem;
+    --form-input-hint-bg: red;
+    --form-input-hint-weight: 500;
+    --form-input-hint-color: #000;
+    --form-error-text: .75rem;
+    --form-error-bg: transparent;
+    --form-error-weight: 500;
+    --form-error-color: #000;
 }
 :root[data-theme="theme1"][data-mode="night-mode"] {
     --font: "Quicksand", sans-serif;
@@ -56,6 +78,24 @@
     --text-pending: #fdcb6e;
     --text-pending-light: #ffeaa7;
     --text-pending-dark: #e1b800;
+
+    --form-input-full-bg: #2e2e2e;
+    --form-label-text: 1rem;
+    --form-label-color: #fff;
+    --form-label-bg: transparent;
+    --form-label-weight: 500
+    --form-input-text: 1rem
+    --form-input-bg: transparent;
+    --form-input-weight: 600;
+    --form-input-color: #fff;
+    --form-input-placeholder-text: 1rem;
+    --form-input-placeholder-bg: transparent;
+    --form-input-placeholder-weight: 500;
+    --form-input-placeholder-color: #fff;
+    --form-error-text: .75rem;
+    --form-error-bg: transparent;
+    --form-error-weight: 500;
+    --form-error-color: #fff;
 }
   
 

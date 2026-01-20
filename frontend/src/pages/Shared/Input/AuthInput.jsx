@@ -7,29 +7,32 @@ export const AuthInput = forwardRef(
     const [viewPassword, setViewPassword] = useState(false);
 
     return (<>
-      {ExternalLabel && <>
-        <div className={`${mod.AuthInputLabel}`}>
-          <span>{ExternalLabel}</span>
+      <div>
+        {ExternalLabel && <>
+          <div className={`${mod.AuthInputLabel}`}>
+            <span>{ExternalLabel}</span>
+          </div>
+        </>}
+
+        <div className={mod.AuthInput}>
+          {InternalLabel && <label>{InternalLabel}</label>}
+
+          <input type={`${isPassword && viewPassword ? `text` : type}`} ref={ref} {...props} />
+
+          {isPassword && <>
+            <button type="button" onClick={() =>{ setViewPassword(!viewPassword) }}>
+              <i className={`mdi ${viewPassword ? `mdi-eye` : `mdi-eye-closed`}`}></i>
+            </button>
+          </>}
         </div>
-      </>}
 
-      <div className={mod.AuthInput}>
-        {InternalLabel && <label>{InternalLabel}</label>}
-
-        <input type={`${isPassword && viewPassword ? `text` : type}`} ref={ref} {...props} />
-
-        {isPassword && <>
-          <button type="button" onClick={() =>{ setViewPassword(!viewPassword) }}>
-            <i className={`mdi ${viewPassword ? `mdi-eye` : `mdi-eye-closed`}`}></i>
-          </button>
+        {Error && <>
+          <div className={`${mod.AuthInputError}`}>
+            <span>{Error}</span>
+          </div>
         </>}
       </div>
-
-      {Error && <>
-        <div className={`${mod.AuthInputError}`}>
-          <span>{Error}</span>
-        </div>
-      </>}
+      
     </>);
   }
 );

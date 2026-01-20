@@ -1,22 +1,23 @@
 :root[data-theme="theme1"][data-mode="day-mode"] {
-    --font: "Quicksand", sans-serif;
-    --primary: #2e2e2e;
-    --secondary: #1b0064;
-    --third: #629aa9;
+    --font: "Montserrat", sans-serif;
+    --primary: #010715;
+    --secondary: #1f4cc5;
+    --third: #f1f1f1;
+    --highlight: #41e7fc;
     --success: #00b894;
     --success-light: #55efc4;
     --success-dark: #019875;
     --fail: #d63031;
     --fail-light: #ff7675;
     --fail-dark: #b71c1c;
-    --pending: #fdcb6e;
-    --pending-light: #ffeaa7;
-    --pending-dark: #e1b800;
+    --pending: #fdba6e;
+    --pending-light: #ffe5a7;
+    --pending-dark: #e18e00;
 
-    --bg: #ececec;
-    --text: #121212;
-    --text-sub: #a0a0a0;
-    --text-sub-secondary: #363636;
+    --bg: #fff;
+    --text: #000;
+    --text-sub: #454545;
+    --text-sub-secondary: #acacac;
     --text-success: #00b894;
     --text-success-light: #55efc4;
     --text-success-dark: #019875;
@@ -26,49 +27,28 @@
     --text-pending: #fdcb6e;
     --text-pending-light: #ffeaa7;
     --text-pending-dark: #e1b800;
-
-    --form-input-full-bg: #e2e2e2;
-    --form-label-text: 1rem;
-    --form-label-color: #000;
-    --form-label-bg: transparent;
-    --form-label-weight: 500
-    --form-input-text: 1rem
-    --form-input-bg: transparent;
-    --form-input-weight: 600;
-    --form-input-color: #000;
-    --form-input-placeholder-text: 1rem;
-    --form-input-placeholder-bg: transparent;
-    --form-input-placeholder-weight: 500;
-    --form-input-placeholder-color: #000;
-    --form-input-hint-text: 1rem;
-    --form-input-hint-bg: red;
-    --form-input-hint-weight: 500;
-    --form-input-hint-color: #000;
-    --form-error-text: .75rem;
-    --form-error-bg: transparent;
-    --form-error-weight: 500;
-    --form-error-color: #000;
 }
 :root[data-theme="theme1"][data-mode="night-mode"] {
-    --font: "Quicksand", sans-serif;
+    --font: "Montserrat", sans-serif;
 
-    --primary: #2e2e2e;
-    --secondary: #6c5ce7;
-    --third: #00b894;
+    --primary: #fff;
+    --secondary: #1f4cc5;
+    --third: #697fe1;
+    --highlight: #41e7fc;
     --success: #00b894;
     --success-light: #55efc4;
     --success-dark: #019875;
     --fail: #d63031;
     --fail-light: #ff7675;
     --fail-dark: #b71c1c;
-    --pending: #fdcb6e;
-    --pending-light: #ffeaa7;
-    --pending-dark: #e1b800;
+    --pending: #fdba6e;
+    --pending-light: #ffe5a7;
+    --pending-dark: #e18e00;
 
-    --bg: #121212;
+    --bg: #010715;
     --text: #ececec;
     --text-sub: #a0a0a0;
-    --text-sub-secondary: #363636;
+    --text-sub-secondary: #646a7e;
     --text-success: #00b894;
     --text-success-light: #55efc4;
     --text-success-dark: #019875;
@@ -78,24 +58,6 @@
     --text-pending: #fdcb6e;
     --text-pending-light: #ffeaa7;
     --text-pending-dark: #e1b800;
-
-    --form-input-full-bg: #2e2e2e;
-    --form-label-text: 1rem;
-    --form-label-color: #fff;
-    --form-label-bg: transparent;
-    --form-label-weight: 500
-    --form-input-text: 1rem
-    --form-input-bg: transparent;
-    --form-input-weight: 600;
-    --form-input-color: #fff;
-    --form-input-placeholder-text: 1rem;
-    --form-input-placeholder-bg: transparent;
-    --form-input-placeholder-weight: 500;
-    --form-input-placeholder-color: #fff;
-    --form-error-text: .75rem;
-    --form-error-bg: transparent;
-    --form-error-weight: 500;
-    --form-error-color: #fff;
 }
   
 

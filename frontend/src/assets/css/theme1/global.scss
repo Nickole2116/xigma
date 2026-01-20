@@ -8,10 +8,11 @@ body {
   line-height: 1;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font);
+  font-family: var(--font) !important;
 }
 * {
   line-height: 1 !important;
+  font-family: var(--font) !important;
 }
 .flex-center {
   @include flex-center;

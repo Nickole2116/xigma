@@ -6,6 +6,11 @@
 
 
 /* Content - Manual Login */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: .813rem;
+}
 
 
 /* Content - Telegram Login */

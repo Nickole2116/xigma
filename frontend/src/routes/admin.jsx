@@ -1,4 +1,4 @@
-import AdminLayout from '@/layouts/AdminLayout/AdminLayout';
+import AdminLayout from '@/layouts/Theme1/AdminLayout/AdminLayout';
 import Login from '@/pages/Admin/Login/login';
 import Dashboard from '@/pages/Admin/Dashboard/dashboard';
 

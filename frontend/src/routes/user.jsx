@@ -1,4 +1,4 @@
-import UserLayout from '@/layouts/UserLayout/UserLayout';
+import UserLayout from '@/layouts/Theme1/UserLayout/UserLayout';
 import Dashboard from '@/pages/User/Dashboard/dashboard';
 
 

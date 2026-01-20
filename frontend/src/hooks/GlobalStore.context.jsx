@@ -9,6 +9,19 @@ export const GlobalStoreProvider = ({ children }) => {
   const [themeMode, setThemeMode] = useState("day-mode");
   const [isLogined, setIsLogined] = useState(false);
 
+  // Layout Settings
+  const [topNav, setTopNav] = useState(false);
+  const [topNavCon, setTopNavCon] = useState(<>123</>);
+  const [leftNav, setLeftNav] = useState(false);
+  const [rightNav, setRightNav] = useState(false);
+  const [bottomNav, setBottomNav] = useState(false);
+  const [topSubNav, setTopSubNav] = useState(false);
+  const [leftSubNav, setLeftSubNav] = useState(false);
+  const [rightSubNav, setRightSubNav] = useState(false);
+  const [bottomSubNav, setBottomSubNav] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(false);
+
+
   useEffect(() => {
 
     /** CHECK day/night Mode */
@@ -24,12 +37,19 @@ export const GlobalStoreProvider = ({ children }) => {
   }, [setThemeMode]);
 
   const store = {
-    theme,
-    setTheme,
-    themeMode,
-    setThemeMode,
-    isLogined,
-    setIsLogined,
+    theme, setTheme,
+    themeMode, setThemeMode,
+    isLogined, setIsLogined,
+    topNav, setTopNav,
+    topNavCon, setTopNavCon,
+    leftNav, setLeftNav,
+    rightNav, setRightNav,
+    bottomNav, setBottomNav,
+    topSubNav, setTopSubNav,
+    leftSubNav, setLeftSubNav,
+    rightSubNav, setRightSubNav,
+    bottomSubNav, setBottomSubNav,
+    isPageLoading, setIsPageLoading
   };
 
   return (

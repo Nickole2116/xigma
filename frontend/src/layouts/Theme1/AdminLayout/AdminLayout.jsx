@@ -1,5 +1,8 @@
 import '@/assets/css/mdi.css';
 import '@/assets/css/theme1/global.scss';
+import './AdminLayout.scss';
+
+import { TopNav } from './Component/TopNav';
 
 import { useEffect } from 'react';
 import { Outlet, Route, Link } from "react-router-dom"
@@ -8,11 +11,15 @@ import { useQuery } from '@tanstack/react-query'
 import { gets } from '@/services/modules/admin.service'
 
 import { GlobalStoreProvider, useGlobalStore } from "@/hooks/GlobalStore.context";
-import mod from './AdminLayout.module.scss';
 
 const AdminLayout = () => {
   const { t, i18n } = useTranslation()
-  const { theme, setTheme, isLogined, setIsLogined, themeMode, setThemeMode } = useGlobalStore();
+  const { theme, setTheme,
+          isLogined, setIsLogined, 
+          themeMode, setThemeMode,
+          topNav, setTopNav,
+          topNavCon, setTopNavCon
+        } = useGlobalStore();
 
   /*const { data: users = [], isLoading, isError, refetch } = useQuery({
     queryKey: ['users'],
@@ -37,7 +44,7 @@ const AdminLayout = () => {
   }, [themeMode, theme])
 
   return (
-    <div className={`${mod.themepage}`}>
+    <div className={`themepage`}>
       {/*
       <div style={{ marginBottom: '1rem' }}>
         <button onClick={() => i18n.changeLanguage('en')}>EN</button>
@@ -45,7 +52,9 @@ const AdminLayout = () => {
         <button onClick={() => i18n.changeLanguage('ms')}>BM</button>
       </div>
       */}
-        <Outlet />
+      {/** TopNav & Content */}
+      {topNav && <TopNav>{topNavCon}</TopNav>}
+      <Outlet />
     </div>
   )
 }

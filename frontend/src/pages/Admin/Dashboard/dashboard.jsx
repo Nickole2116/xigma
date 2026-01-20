@@ -16,8 +16,7 @@ const Dashboard = () => {
     }, [])
 
     return <>
-        {theme}
-        <div className="flex">this is test dashboard</div>
+    
     </>;
 };
   

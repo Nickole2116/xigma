@@ -11,21 +11,21 @@ export const GlobalStoreProvider = ({ children }) => {
 
   // Layout Settings
   const [topNav, setTopNav] = useState(false);
-  const [topNavCon, setTopNavCon] = useState(<></>);
+  const [topNavCon, setTopNavCon] = useState(null);
   const [leftNav, setLeftNav] = useState(false);
-  const [leftNavCon, setLeftNavCon] = useState(<></>);
+  const [leftNavCon, setLeftNavCon] = useState(null);
   const [rightNav, setRightNav] = useState(false);
-  const [rightNavCon, setRightNavCon] = useState(<></>);
+  const [rightNavCon, setRightNavCon] = useState(null);
   const [bottomNav, setBottomNav] = useState(false);
-  const [bottomNavCon, setBottomNavCon] = useState(<></>);
+  const [bottomNavCon, setBottomNavCon] = useState(null);
   const [topSubNav, setTopSubNav] = useState(false);
-  const [topSubNavCon, setTopSubNavCon] = useState(<></>);
+  const [topSubNavCon, setTopSubNavCon] = useState(null);
   const [leftSubNav, setLeftSubNav] = useState(false);
-  const [leftSubNavCon, setLeftSubNavCon] = useState(<></>);
+  const [leftSubNavCon, setLeftSubNavCon] = useState(null);
   const [rightSubNav, setRightSubNav] = useState(false);
-  const [rightSubNavCon, setRightSubNavCon] = useState(<></>);
+  const [rightSubNavCon, setRightSubNavCon] = useState(null);
   const [bottomSubNav, setBottomSubNav] = useState(true);
-  const [bottomSubNavCon, setBottomSubNavCon] = useState(<></>);
+  const [bottomSubNavCon, setBottomSubNavCon] = useState(null);
   const [isPageLoading, setIsPageLoading] = useState(true);
 
 

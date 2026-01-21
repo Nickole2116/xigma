@@ -83,7 +83,7 @@ const AdminLayout = () => {
         {/** Main Content */}
         <div className="main-page-content">
 
-          {topNav && <TopNav>{topNavCon}</TopNav>}
+          {topNav && (topNavCon ? <TopNav>{topNavCon}</TopNav> : <TopNav/>)}
 
           <div class="main-body">
             {/** Inner Container */}

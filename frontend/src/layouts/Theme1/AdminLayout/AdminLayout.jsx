@@ -3,6 +3,13 @@ import '@/assets/css/theme1/global.scss';
 import './AdminLayout.scss';
 
 import { TopNav } from './Component/TopNav';
+import { BottomNav } from './Component/BottomNav';
+import { LeftNav } from './Component/LeftNav';
+import { RightNav } from './Component/RightNav';
+import { TopSubNav } from './Component/TopSubNav';
+import { BottomSubNav } from './Component/BottomSubNav';
+import { LeftSubNav } from './Component/LeftSubNav';
+import { RightSubNav } from './Component/RightSubNav';
 
 import { useEffect } from 'react';
 import { Outlet, Route, Link } from "react-router-dom"
@@ -18,7 +25,22 @@ const AdminLayout = () => {
           isLogined, setIsLogined, 
           themeMode, setThemeMode,
           topNav, setTopNav,
-          topNavCon, setTopNavCon
+          topNavCon, setTopNavCon,
+          leftNav, setLeftNav,
+          leftNavCon, setLeftNavCon,
+          rightNav, setRightNav,
+          rightNavCon, setRightNavCon,
+          bottomNav, setBottomNav,
+          bottomNavCon, setBottomNavCon,
+          topSubNav, setTopSubNav,
+          topSubNavCon, setTopSubNavCon,
+          leftSubNav, setLeftSubNav,
+          leftSubNavCon, setLeftSubNavCon,
+          rightSubNav, setRightSubNav,
+          rightSubNavCon, setRightSubNavCon,
+          bottomSubNav, setBottomSubNav,
+          bottomSubNavCon, setBottomSubNavCon,
+          isPageLoading, setIsPageLoading
         } = useGlobalStore();
 
   /*const { data: users = [], isLoading, isError, refetch } = useQuery({
@@ -53,8 +75,37 @@ const AdminLayout = () => {
       </div>
       */}
       {/** TopNav & Content */}
-      {topNav && <TopNav>{topNavCon}</TopNav>}
-      <Outlet />
+      
+      <div className="main-template">
+        {/** Top Nav  */}
+        {topNav && <TopNav>{topNavCon}</TopNav>}
+
+        {/** Main Content */}
+        <div className="main-page-content">
+
+          {leftNav && <LeftNav>{leftNavCon}</LeftNav>}
+
+          <div class="main-body">
+            {/** Inner Container */}
+            {topSubNav && <TopSubNav>{topSubNavCon}</TopSubNav>}
+
+            <div class="sub-body">
+              {leftSubNav && <LeftSubNav>{leftSubNavCon}</LeftSubNav>}
+              <Outlet />
+              {rightSubNav && <RightSubNav>{rightSubNavCon}</RightSubNav>}
+            </div>
+
+            {bottomSubNav && <BottomSubNav>{bottomSubNavCon}</BottomSubNav>}
+          </div>
+
+          {rightNav && <RightNav>{rightNavCon}</RightNav>}
+
+        </div>
+
+        {/** Bottom Nav */}
+        {bottomNav && <BottomNav>{bottomNavCon}</BottomNav>}
+      </div>
+      
     </div>
   )
 }

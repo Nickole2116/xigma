@@ -3,7 +3,7 @@ export const TopNav = ({children}) => {
 
 
     return <>
-        {children} 123
+        {children}
     </>;
 }
 

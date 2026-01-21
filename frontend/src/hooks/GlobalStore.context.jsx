@@ -13,12 +13,19 @@ export const GlobalStoreProvider = ({ children }) => {
   const [topNav, setTopNav] = useState(false);
   const [topNavCon, setTopNavCon] = useState(<>123</>);
   const [leftNav, setLeftNav] = useState(false);
+  const [leftNavCon, setLeftNavCon] = useState(<>123</>);
   const [rightNav, setRightNav] = useState(false);
+  const [rightNavCon, setRightNavCon] = useState(<>123</>);
   const [bottomNav, setBottomNav] = useState(false);
+  const [bottomNavCon, setBottomNavCon] = useState(<>123</>);
   const [topSubNav, setTopSubNav] = useState(false);
+  const [topSubNavCon, setTopSubNavCon] = useState(<>123</>);
   const [leftSubNav, setLeftSubNav] = useState(false);
+  const [leftSubNavCon, setLeftSubNavCon] = useState(<>123</>);
   const [rightSubNav, setRightSubNav] = useState(false);
+  const [rightSubNavCon, setRightSubNavCon] = useState(<>123</>);
   const [bottomSubNav, setBottomSubNav] = useState(false);
+  const [bottomSubNavCon, setBottomSubNavCon] = useState(<>123</>);
   const [isPageLoading, setIsPageLoading] = useState(false);
 
 
@@ -43,12 +50,19 @@ export const GlobalStoreProvider = ({ children }) => {
     topNav, setTopNav,
     topNavCon, setTopNavCon,
     leftNav, setLeftNav,
+    leftNavCon, setLeftNavCon,
     rightNav, setRightNav,
+    rightNavCon, setRightNavCon,
     bottomNav, setBottomNav,
+    bottomNavCon, setBottomNavCon,
     topSubNav, setTopSubNav,
+    topSubNavCon, setTopSubNavCon,
     leftSubNav, setLeftSubNav,
+    leftSubNavCon, setLeftSubNavCon,
     rightSubNav, setRightSubNav,
+    rightSubNavCon, setRightSubNavCon,
     bottomSubNav, setBottomSubNav,
+    bottomSubNavCon, setBottomSubNavCon,
     isPageLoading, setIsPageLoading
   };
 

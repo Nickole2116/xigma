@@ -4,7 +4,7 @@ export const TopNav = ({children}) => {
 
     return <>
         <nav className="top-nav">
-            {children}
+            {children} top nav
         </nav>
     </>;
 }

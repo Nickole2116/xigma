@@ -66,7 +66,7 @@ const AdminLayout = () => {
   }, [themeMode, theme])
 
   return (
-    <div className={`themepage`}>
+    <div className={`theme-container`}>
       {/*
       <div style={{ marginBottom: '1rem' }}>
         <button onClick={() => i18n.changeLanguage('en')}>EN</button>
@@ -77,33 +77,35 @@ const AdminLayout = () => {
       {/** TopNav & Content */}
       
       <div className="main-template">
-        {/** Top Nav  */}
-        {topNav && <TopNav>{topNavCon}</TopNav>}
-
+        
+        
+        {leftNav && <LeftNav>{leftNavCon}</LeftNav>}
         {/** Main Content */}
         <div className="main-page-content">
 
-          {leftNav && <LeftNav>{leftNavCon}</LeftNav>}
+          {topNav && <TopNav>{topNavCon}</TopNav>}
 
           <div class="main-body">
             {/** Inner Container */}
-            {topSubNav && <TopSubNav>{topSubNavCon}</TopSubNav>}
-
+            
+            {leftSubNav && <LeftSubNav>{leftSubNavCon}</LeftSubNav>}
             <div class="sub-body">
-              {leftSubNav && <LeftSubNav>{leftSubNavCon}</LeftSubNav>}
-              <Outlet />
-              {rightSubNav && <RightSubNav>{rightSubNavCon}</RightSubNav>}
-            </div>
+              {topSubNav && <TopSubNav>{topSubNavCon}</TopSubNav>}
 
-            {bottomSubNav && <BottomSubNav>{bottomSubNavCon}</BottomSubNav>}
+              <Outlet />
+              {bottomSubNav && <BottomSubNav>{bottomSubNavCon}</BottomSubNav>}
+            </div>
+            {rightSubNav && <RightSubNav>{rightSubNavCon}</RightSubNav>}
+            
           </div>
 
-          {rightNav && <RightNav>{rightNavCon}</RightNav>}
+          {/** Bottom Nav */}
+          {bottomNav && <BottomNav>{bottomNavCon}</BottomNav>}
 
         </div>
+        {rightNav && <RightNav>{rightNavCon}</RightNav>}
 
-        {/** Bottom Nav */}
-        {bottomNav && <BottomNav>{bottomNavCon}</BottomNav>}
+        
       </div>
       
     </div>

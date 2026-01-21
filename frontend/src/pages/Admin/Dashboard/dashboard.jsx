@@ -36,7 +36,7 @@ const Dashboard = () => {
     }, [])
 
     return <>
-        <div>
+        <div class="page dashboard">
             dashboard header
         </div>
     </>;

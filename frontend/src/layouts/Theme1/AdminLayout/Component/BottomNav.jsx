@@ -4,7 +4,7 @@ export const BottomNav = ({children}) => {
 
     return <>
         <nav className="bottom-nav">
-            {children}
+            {children} bottom nav
         </nav>
     </>;
 }

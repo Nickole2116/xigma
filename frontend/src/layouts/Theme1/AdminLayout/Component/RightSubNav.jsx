@@ -3,7 +3,9 @@ export const RightSubNav = ({children}) => {
 
 
     return <>
-        {children} 123
+        <div className="right-sub-nav">
+            {children}
+        </div>
     </>;
 }
 

@@ -3,7 +3,9 @@ export const LeftNav = ({children}) => {
 
 
     return <>
-        {children} 123
+        <div className="left-nav">
+            {children}
+        </div>
     </>;
 }
 

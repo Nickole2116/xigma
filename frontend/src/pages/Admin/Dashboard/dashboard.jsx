@@ -36,7 +36,9 @@ const Dashboard = () => {
     }, [])
 
     return <>
-    dd
+        <div>
+            dashboard header
+        </div>
     </>;
 };
   

@@ -3,7 +3,9 @@ export const BottomSubNav = ({children}) => {
 
 
     return <>
-        {children} 123
+        <nav className="bottom-sub-nav">
+            {children}
+        </nav>
     </>;
 }
 

@@ -13,6 +13,10 @@ body {
 * {
   line-height: 1 !important;
   font-family: var(--font) !important;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: none;
+  border-color: #000;
 }
 .flex-center {
   @include flex-center;

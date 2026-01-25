@@ -37,7 +37,7 @@ export const GlobalStoreProvider = ({ children }) => {
     if (hours >= 19) {
       setThemeMode("night-mode");
     } else {
-      setThemeMode("day-mode");
+      setThemeMode("night-mode"); //day-mode
     }
     /** END CHECK day/night Mode */
 

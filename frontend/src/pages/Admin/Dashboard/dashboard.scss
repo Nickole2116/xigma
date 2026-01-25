@@ -1,0 +1,174 @@
+.dashboard {
+    padding: .5rem 3rem 0;
+    & > .banner {
+        width: 100%;
+        min-height: 100px;
+        background: #0b0f1c;
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 1rem;
+        & .date {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            & > h2 {
+                margin: 0;
+                font-weight: 500;
+                width: 4rem;
+                height: 4rem;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #0d1628;
+                & > b {
+                    font-weight: 400;
+                    font-size: .75rem;
+                    margin-left: .25rem;
+                }
+            }
+            & > .info {
+                & > h5 {
+                    margin: 0;
+                    color: var(--text);
+                    font-size: 1.25rem;
+                    font-weight: 500;
+                }
+                & > span {
+                    display: block;
+                    color: var(--text-sub);
+                    margin-top: .5rem;
+                    font-size: .875rem;
+                    font-weight: 300;
+                }
+            }
+        }
+        & .welcome {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            gap: .75rem;
+            & .main {
+                text-align: center;
+                font-size: 1.125rem;
+                color: var(--text-sub-secondary);
+            }
+            & .sub {
+                text-align: center;
+                font-size: 1.375rem;
+                color: var(--text);
+                & b {
+                    font-weight: 500;
+                    color: #fff;
+                }
+            }
+
+        }
+        & .search {
+            flex: 1;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            & > .btn-search-ai {
+                width: 3.5rem;
+                height: 3.5rem;
+                max-width: 3.5rem;
+                max-height: 3.5rem;
+                min-width: 3.5rem;
+                max-height: 3.5rem;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: radial-gradient(ellipse at bottom,#2f93f1,#0348f2 100%);
+                & i {
+                    font-size: 2rem;
+                }
+            }
+        }
+    }
+
+    & > .dashboard-grid {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 100px;
+        gap: 1rem;
+        & > .new-request {
+            grid-column-start: 1;
+            grid-row-start: 1;
+            grid-row-end: 3;
+            background: #0b0f1c;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+
+            & .title {
+                font-size: .875rem;
+                font-weight: 500;
+                color: var(--text-sub-secondary);
+                padding: 0.25rem 0 .5rem;
+            }
+
+            & .listing {
+
+            }
+        }
+        & > .coming-request {
+            background: #0b0f1c;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+
+            & .title {
+                font-size: .875rem;
+                font-weight: 500;
+                color: var(--text-sub-secondary);
+                padding: 0.25rem 0 .5rem;
+            }
+
+            & .listing {
+                
+            }
+        }
+        & > .pending-request {
+            background: #0b0f1c;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+
+            & .title {
+                font-size: .875rem;
+                font-weight: 500;
+                color: var(--text-sub-secondary);
+                padding: 0.25rem 0 .5rem;
+            }
+
+            & .listing {
+                
+            }
+        }
+        & > .progressed-request {
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 2;
+            grid-column-end: 4;
+
+            background: #0b0f1c;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+
+            & .title {
+                font-size: .875rem;
+                font-weight: 500;
+                color: var(--text-sub-secondary);
+                padding: 0.25rem 0 .5rem;
+            }
+
+            & .listing {
+                
+            }
+        }
+    }
+}

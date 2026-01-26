@@ -1,6 +1,7 @@
 import './dashboard.scss';
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
 import { useEffect } from "react";
+import { ThirdButton, SubmitButton, CancelButton, MoreButton } from '@/pages/Shared';
 import { getTelegramProfile, getTelegramUpdates, loginTelegramClient } from "@/services/modules/telegramclient.service";
 
 const Dashboard = () => {
@@ -49,8 +50,8 @@ const Dashboard = () => {
                 </div>
 
                 <div className="welcome">
-                    <div className="main">Welcome Back</div>
-                    <div className="sub">Tan Nickole, Superadmin</div>
+                    <div className="time">20<b>:</b>59</div>
+                    <div className="main">Welcome Back, Tan Nickole</div>
                 </div>
 
                 <div className="search">
@@ -63,20 +64,216 @@ const Dashboard = () => {
             {/** Dashboard Grid Layout */}
             <section className="dashboard-grid">
                 <div className="new-request">
-                    <div className="title">New Request</div>
+                    <div className="header">
+                        <div className="title">New Request</div>
+                        <div className="action">
+                            <ThirdButton>Create New</ThirdButton>
+                        </div>
+                    </div>
+                    
 
                     <div class="listing">
-                        ss
+                        <div className="each-list">
+                            <div className="info">
+                                <div className="thumbnail">
+                                    <img src="https://picsum.photos/200/300" alt="profile" />
+                                    <span>Allan Ng <b>(017***7827)</b></span>
+                                </div>
+                                <div class="comment">
+                                    Hi, I want can direct login der login page API
+                                </div>
+                                <div class="ticketno">
+                                    <div class="highlight">#</div>
+                                    <span>176375</span>
+                                </div>
+                                <div class="footer">
+                                    <span className="date">25 Jan 2025 | 20:37</span>
+                                    <div className="action">
+                                        <SubmitButton>Create Project</SubmitButton>
+                                        <CancelButton>Delete</CancelButton>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="info">
+                                <div className="thumbnail">
+                                    <img src="https://picsum.photos/200/300" alt="profile" />
+                                    <span>Allan Ng <b>(017***7827)</b></span>
+                                </div>
+                                <div class="comment">
+                                    Hi, I want can direct login der login page API
+                                </div>
+                                <div class="ticketno">
+                                    <div class="highlight">#</div>
+                                    <span>176375</span>
+                                </div>
+                                <div class="footer">
+                                    <span className="date">25 Jan 2025 | 20:37</span>
+                                    <div className="action">
+                                        <SubmitButton>Create Project</SubmitButton>
+                                        <CancelButton>Delete</CancelButton>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="info">
+                                <div className="thumbnail">
+                                    <img src="https://picsum.photos/200/300" alt="profile" />
+                                    <span>Allan Ng <b>(017***7827)</b></span>
+                                </div>
+                                <div class="comment">
+                                    Hi, I want can direct login der login page API
+                                </div>
+                                <div class="ticketno">
+                                    <div class="highlight">#</div>
+                                    <span>176375</span>
+                                </div>
+                                <div class="footer">
+                                    <span className="date">25 Jan 2025 | 20:37</span>
+                                    <div className="action">
+                                        <SubmitButton>Create Project</SubmitButton>
+                                        <CancelButton>Delete</CancelButton>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="coming-request">
-                    <div className="title">Coming on Next</div>
+                    <div className="header">
+                        <div className="title">Coming On Next</div>
+                        <div className="action">
+                            <MoreButton>
+                                <span>More</span>
+                                <i className="mdi mdi-arrow-expand-all"></i>
+                            </MoreButton>
+                        </div>
+                    </div>
 
                     <div class="listing">
-                        ss
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <div className="thumbnail">
+                                        <img src="https://picsum.photos/200/300" alt="profile" />
+                                    </div>
+                                    <div class="ticketno">
+                                        <div class="highlight">#</div>
+                                        <span>176375</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <div className="thumbnail">
+                                        <img src="https://picsum.photos/200/300" alt="profile" />
+                                    </div>
+                                    <div class="ticketno">
+                                        <div class="highlight">#</div>
+                                        <span>176375</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <div className="thumbnail">
+                                        <img src="https://picsum.photos/200/300" alt="profile" />
+                                    </div>
+                                    <div class="ticketno">
+                                        <div class="highlight">#</div>
+                                        <span>176375</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <div className="thumbnail">
+                                        <img src="https://picsum.photos/200/300" alt="profile" />
+                                    </div>
+                                    <div class="ticketno">
+                                        <div class="highlight">#</div>
+                                        <span>176375</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <div className="thumbnail">
+                                        <img src="https://picsum.photos/200/300" alt="profile" />
+                                    </div>
+                                    <div class="ticketno">
+                                        <div class="highlight">#</div>
+                                        <span>176375</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <div className="thumbnail">
+                                        <img src="https://picsum.photos/200/300" alt="profile" />
+                                    </div>
+                                    <div class="ticketno">
+                                        <div class="highlight">#</div>
+                                        <span>176375</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="pending-request">
+                <div className="completed-request">
                     <div className="title">Latest Completed</div>
 
                     <div class="listing">

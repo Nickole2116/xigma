@@ -18,6 +18,9 @@ body {
   border-style: none;
   border-color: #000;
 }
+::-webkit-scrollbar {
+  width: 0;
+}
 .flex-center {
   @include flex-center;
   @include justify-center;

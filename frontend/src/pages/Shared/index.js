@@ -5,6 +5,8 @@ export { default as PrimaryButton } from './Button/PrimaryButton';
 export { default as SecondaryButton } from './Button/SecondaryButton';
 export { default as ThirdButton } from './Button/ThirdButton';
 export { default as SubmitButton } from './Button/SubmitButton';
+export { default as CancelButton } from './Button/CancelButton';
+export { default as MoreButton } from './Button/MoreButton';
 
 /** Graph */
 export { default as BarChart } from './Graph/BarChart';

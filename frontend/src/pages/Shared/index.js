@@ -7,6 +7,7 @@ export { default as ThirdButton } from './Button/ThirdButton';
 export { default as SubmitButton } from './Button/SubmitButton';
 export { default as CancelButton } from './Button/CancelButton';
 export { default as MoreButton } from './Button/MoreButton';
+export { default as DownloadButton } from './Button/DownloadButton';
 
 /** Graph */
 export { default as BarChart } from './Graph/BarChart';

@@ -1,0 +1,64 @@
+/* Small Calender View */
+.smallcalenderfull {
+    display: flex;
+    gap: .5rem;
+    flex-direction: column;
+    & > .smallcalenderheader {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        & > .smallcalender_left {
+            background: #ffffff2d;
+            background: transparent;
+            border: none;
+            & > i {
+                font-size: 1rem;
+                color: var(--text-sub-secondary);
+            }
+        }
+
+        & > span.name {
+            text-align: center;
+            font-size: .813rem;
+            color: #fff;
+            flex: 1;
+        }
+
+        & > .smallcalender_right {
+            background: transparent;
+            border: none;
+            & > i {
+                font-size: 1rem;
+                color: var(--text);
+            }
+        }
+    }
+
+    & > .weekdays {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+        & > .weekday {
+            font-size: .813rem;
+            font-weight: 500;
+            color: var(--text-sub-secondary);
+        }
+    }
+
+    & > .smallcalenderbody {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+    
+        & > .day {
+            aspect-ratio: 1;
+            font-size: .813rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &.today {
+                color: aqua;
+            }
+        }
+    }
+}

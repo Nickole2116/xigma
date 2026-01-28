@@ -1,8 +1,9 @@
 import './dashboard.scss';
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
 import { useEffect } from "react";
-import { ThirdButton, SubmitButton, CancelButton, MoreButton } from '@/pages/Shared';
+import { ThirdButton, SubmitButton, CancelButton, MoreButton, DownloadButton } from '@/pages/Shared';
 import { getTelegramProfile, getTelegramUpdates, loginTelegramClient } from "@/services/modules/telegramclient.service";
+import SmallCalender from '@/pages/Admin/Components/Calender/SmallCalender';
 
 const Dashboard = () => {
     const { theme, setTheme,
@@ -274,18 +275,104 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="completed-request">
-                    <div className="title">Latest Completed</div>
+                    <div className="header">
+                        <div className="title">Latest Completed</div>
+                        <div className="action">
+                            <MoreButton>
+                                <span>More</span>
+                                <i className="mdi mdi-arrow-expand-all"></i>
+                            </MoreButton>
+                        </div>
+                    </div>
 
                     <div class="listing">
-                        ss
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <DownloadButton>
+                                        <span>Get Now</span>
+                                    </DownloadButton>
+                                    <SubmitButton>
+                                        <span>Review</span>
+                                    </SubmitButton>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <DownloadButton>
+                                        <span>Get Now</span>
+                                    </DownloadButton>
+                                    <SubmitButton>
+                                        <span>Review</span>
+                                    </SubmitButton>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <DownloadButton>
+                                        <span>Get Now</span>
+                                    </DownloadButton>
+                                    <SubmitButton>
+                                        <span>Review</span>
+                                    </SubmitButton>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div className="each-list">
+                            <div className="thumbnail">
+                                <img src="https://picsum.photos/200/300" alt="profile" />
+                            </div>
+                            <div className="info">
+                                <span className="name">Maxwell</span>
+                                <div class="ml-auto sub-info">
+                                    <DownloadButton>
+                                        <span>Get Now</span>
+                                    </DownloadButton>
+                                    <SubmitButton>
+                                        <span>Review</span>
+                                    </SubmitButton>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="progressed-request">
-                    <div className="title">Projects On Due</div>
+                    <div className="header">
+                        <div className="title">Projects on Due / Activity Notify</div>
+                    </div>
 
                     <div class="info">
-                        <div className="listing"></div>
-                        <div className="calender"></div>
+                        <div className="calender">
+                            <SmallCalender viewMonth={true}/>
+                        </div>
+                        <div className="calender-listing">
+                            <div className="each-task">
+                                <div className="name">Maxwell Global</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -19,7 +19,7 @@ export const TopNav = ({children}) => {
 
                     <Link className="nav-item">
                         
-                        <span>Product</span>
+                        <span>Project</span>
                         <div className="line"></div>
                     </Link>
 

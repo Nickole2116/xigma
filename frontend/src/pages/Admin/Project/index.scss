@@ -1,0 +1,108 @@
+/* Left Sub Nav */
+.left-sub-nav-content {
+    padding: .5rem 3vw;
+
+        & > .sub-nav-header {
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            & i {
+                font-size: 1rem;
+                color: var(--highlight);
+            }
+            & span {
+                color: #fff;
+                font-size: .875rem;
+                font-weight: 600;
+            }
+        }
+        & > .sub-nav-item {
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+
+            & span {
+                color: #fff;
+                font-size: .875rem;
+                font-weight: 500;
+            }
+
+
+            & > .bolded, &:hover {
+
+            }
+        }
+    
+
+    
+}
+
+/* Top Sub Nav */
+.top-sub-nav-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    & > .left { flex: 1; display: flex; align-items: center; gap: .5rem; justify-content: start; }
+    & > .right { 
+        flex: 1; display: flex; align-items: center; gap: .5rem; justify-content: end;
+        padding-right: 4vw;
+     }
+}
+.btn-layout {
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: .375rem;
+    & > i {
+        font-size: .813rem;
+        color: var(--text-sub-secondary);
+
+    }
+    & > span {
+        font-size: .75rem;
+        font-weight: 500;
+        color: var(--text-sub-secondary);
+    }
+}
+
+
+/* MansoryLayout */
+.masonry {
+    column-count: 4;
+    column-gap: 1rem;
+
+    padding: .5rem 1rem;
+    max-height: 100%;
+    overflow: auto;
+
+    @media (max-width: 1024px) {
+        .masonry {
+          column-count: 3;
+        }
+    }
+      
+    @media (max-width: 768px) {
+        .masonry {
+          column-count: 2;
+        }
+    }
+      
+    @media (max-width: 480px) {
+        .masonry {
+          column-count: 1;
+        }
+    }
+}
+.masonry-item {
+    break-inside: avoid;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+  
+
+
+
+/* RowLayout */

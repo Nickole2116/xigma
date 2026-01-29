@@ -4,7 +4,7 @@ export const LeftSubNav = ({children}) => {
 
     return <>
         <div className="left-sub-nav">
-            {children} left sub nav
+            {children}
         </div>
     </>;
 }

@@ -1,0 +1,63 @@
+.card {
+    width: 100%;
+    & > .head {
+        display: flex;
+        align-items: center;
+        padding: .75rem .5rem;
+        & > span {
+            font-size: .813rem;
+        }
+        & > .actions {
+            margin-left: auto;
+            & > .more {
+                border: none;
+                padding: 0;
+                background: transparent;
+                & i {
+                    color: #fff;
+                }
+            }
+        }
+
+    }
+    & > .body {
+        & .thumbnail {
+            & img {
+                width: 100%;
+                height: auto;
+            }
+            
+        }
+    }
+    & > .footer {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        & .thumbnail {
+            & img {
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+            }
+        }
+
+        & .comment {
+            display: flex;
+            align-items: center;
+            gap: .375rem;
+        }
+
+        & .itemcount {
+            display: flex;
+            align-items: center;
+            gap: .375rem;
+        }
+
+        & .status {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: .375rem;
+        }
+    }
+}

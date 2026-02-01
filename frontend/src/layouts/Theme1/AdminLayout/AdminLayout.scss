@@ -258,7 +258,7 @@ $topnav-height: 80px;
         display: flex;
         justify-content: end;
         align-items: center;
-        gap: 1.25rem;
+        gap: .75rem;
         width: 20%;
 
         & > .btn-settings {
@@ -316,7 +316,7 @@ $topnav-height: 80px;
             }
         }
         & > .btn-theme {
-            margin-left: 0px;
+            margin-right: 1rem;
             background: radial-gradient(ellipse at bottom,#2f93f1,#0348f2 100%);
             width: 2.25rem;
             height: 2.25rem;

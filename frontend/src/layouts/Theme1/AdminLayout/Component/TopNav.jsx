@@ -1,8 +1,11 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next'
 
 export const TopNav = ({children}) => {
 
     const location = useLocation();
+    const { t, i18n } = useTranslation()
+
 
     return <>
         <nav className="top-nav">
@@ -14,43 +17,43 @@ export const TopNav = ({children}) => {
                 <div class="navigator">
                     <NavLink className={`nav-item ${location.pathname === `/admin/dashboard` ? `bolded` : ``}`} to="/admin/dashboard">
                         
-                        <span>Dashboard</span>
+                        <span>{t('dashboard')}</span>
                         <div className="line"></div>
                     </NavLink>
 
                     <Link className={`nav-item ${location.pathname === `/admin/project` ? `bolded` : ``}`} to="/admin/project">
                         
-                        <span>Project</span>
+                        <span>{t('project')}</span>
                         <div className="line"></div>
                     </Link>
 
                     <Link className={`nav-item ${location.pathname === `/admin/chat` ? `bolded` : ``}`} to="/admin/chat">
                         
-                        <span>Chats</span>
+                        <span>{t('chats')}</span>
                         <div className="line"></div>
                         <div class="badget"></div>
                     </Link>
 
                     <Link className={`nav-item ${location.pathname === `/admin/drive` ? `bolded` : ``}`} to="/admin/drive">
                         
-                        <span>Drive</span>
+                        <span>{t('drive')}</span>
                         <div className="line"></div>
                     </Link>
 
                     <Link className={`nav-item ${location.pathname === `/admin/finance` ? `bolded` : ``}`} to="/admin/finance">
                         
-                        <span>My Bills</span>
+                        <span>{t('finance')}</span>
                         <div className="line"></div>
                     </Link>
 
                     <Link className={`nav-item ${location.pathname === `/admin/theme` ? `bolded` : ``}`} to="/admin/theme">
                         
-                        <span>Theme</span>
+                        <span>{t('theme')}</span>
                         <div className="line"></div>
                     </Link>
                 </div>
                 <div className="user">
-                    <Link className="btn-settings">
+                    <Link className="btn-settings" to="/admin/general-setting">
                         <i className="mdi mdi-cog"></i>
                     </Link>
 
@@ -65,7 +68,7 @@ export const TopNav = ({children}) => {
 
                     <Link className="btn-user">
                         <img src="/images/shared/flag-icon/cny.webp" />
-                        <span>English</span>
+                        <span>{t('key')}</span>
                     </Link>
 
                     

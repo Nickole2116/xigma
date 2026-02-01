@@ -1,4 +1,11 @@
 {
-    "welcome": "欢迎"
+    "key": "简体中文",
+    "welcome": "欢迎",
+    "dashboard": "首页面板",
+    "project": "运行项目",
+    "chats": "聊天室",
+    "drive": "云端资料库",
+    "finance": "金融服务",
+    "theme": "共享主题"
 }
   

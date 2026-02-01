@@ -123,3 +123,135 @@
         font-weight: var(--auth-error-weight);
     } 
 }
+
+
+
+
+/* Theme 1 - Day Mode */
+:root[data-theme="theme1"][data-mode="day-mode"] {
+    --comment-input-full-bg: #ededed;
+    --comment-label-text: .813rem;
+    --comment-label-color: var(--text-sub);
+    --comment-label-bg: transparent;
+    --comment-label-weight: 600;
+    --comment-input-text: .875rem;
+    --comment-input-bg: transparent;
+    --comment-input-weight: 500;
+    --comment-input-color: #000;
+    --comment-input-placeholder-text: .875rem;
+    --comment-input-placeholder-bg: transparent;
+    --comment-input-placeholder-weight: 500;
+    --comment-input-placeholder-color: var(--text-sub-secondary);
+    --comment-input-hint-text: 1rem;
+    --comment-input-hint-bg: transparent;
+    --comment-input-hint-weight: 500;
+    --comment-input-hint-color: #65aef6;
+    --comment-error-text: .75rem;
+    --comment-error-bg: transparent;
+    --comment-error-weight: 500;
+    --comment-error-color: var(--fail);
+}
+:root[data-theme="theme1"][data-mode="night-mode"] {
+    --comment-input-full-bg: #101622;
+    --comment-label-text: .813rem;
+    --comment-label-color: var(--highlight);
+    --comment-label-bg: transparent;
+    --comment-label-weight: 600;
+    --comment-input-text: .875rem;
+    --comment-input-bg: transparent;
+    --comment-input-weight: 600;
+    --comment-input-color: #fff;
+    --comment-input-placeholder-text: .875rem;
+    --comment-input-placeholder-bg: transparent;
+    --comment-input-placeholder-weight: 500;
+    --comment-input-placeholder-color: var(--text-sub-secondary);
+    --comment-input-hint-text: 1rem;
+    --comment-input-hint-bg: transparent;
+    --comment-input-hint-weight: 500;
+    --comment-input-hint-color: #65aef6;
+    --comment-error-text: .75rem;
+    --comment-error-bg: transparent;
+    --comment-error-weight: 500;
+    --comment-error-color: var(--fail);
+}
+
+/* Comment */
+.CommentInput {
+    background: var(--comment-input-full-bg);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .675rem 1rem;
+    border-radius: 10px;
+    & label {
+        background: var(--comment-label-bg);
+        color: var(--comment-label-color);
+        font-size: var(--comment-label-text);
+        font-weight: var(--comment-label-weight);
+        text-transform: capitalize;
+        width: 80px;
+    }
+    & input {
+        outline: none;
+        border: none;
+        background: var(--comment-input-bg);
+        color: var(--comment-input-color);
+        font-size: var(--comment-input-text);
+        font-weight: var(--comment-input-weight);
+        letter-spacing: .6px;
+
+        &::placeholder {
+            background: var(--comment-input-placeholder-bg);
+            color: var(--comment-input-placeholder-color);
+            font-size: var(--comment-input-placeholder-text);
+            font-weight: var(--comment-input-placeholder-weight);
+        }
+    }
+    & button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: var(--comment-input-hint-bg);
+        color: var(--comment-input-hint-color);
+        margin-right: -.5rem;
+        & i {
+            font-size: var(--comment-input-hint-text);
+            color: var(--comment-input-hint-color);
+        }
+        & span {
+            font-size: var(--comment-input-hint-text);
+            color: var(--comment-input-hint-color);
+            font-weight: var(--comment-input-hint-weight);
+        }
+    }
+}
+
+.CommentInputLabel {
+    background: var(--comment-label-bg);
+    & i {
+        color: var(--comment-label-color);
+        font-size: var(--comment-label-text);
+    }
+    & span {
+        color: var(--comment-label-color);
+        font-size: var(--comment-label-text);
+        font-weight: var(--comment-label-weight);
+        text-transform: capitalize;
+    } 
+}
+
+.CommentInputError {
+    background: var(--comment-error-bg);
+    & i {
+        color: var(--comment-error-color);
+        font-size: var(--comment-error-text);
+    }
+    & span {
+        color: var(--comment-error-color);
+        font-size: var(--comment-error-text);
+        font-weight: var(--comment-error-weight);
+    } 
+}
+
+
+

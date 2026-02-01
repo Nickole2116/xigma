@@ -77,33 +77,35 @@ const AdminLayout = () => {
       {/** TopNav & Content */}
       
       <div className="main-template">
-        
-        
-        {leftNav && <LeftNav>{leftNavCon}</LeftNav>}
-        {/** Main Content */}
-        <div className="main-page-content">
 
-          {topNav && (topNavCon ? <TopNav>{topNavCon}</TopNav> : <TopNav/>)}
+        {topNav && (topNavCon ? <TopNav>{topNavCon}</TopNav> : <TopNav/>)}
+
+        {/** Main Content */}
+        <div className="main-template-content">
+          {leftNav && <LeftNav>{leftNavCon}</LeftNav>}
 
           <div class="main-body">
-            {/** Inner Container */}
-            
-            {leftSubNav && <LeftSubNav>{leftSubNavCon}</LeftSubNav>}
-            <div class="sub-body">
-              {topSubNav && <TopSubNav>{topSubNavCon}</TopSubNav>}
 
-              <Outlet />
-              {bottomSubNav && <BottomSubNav>{bottomSubNavCon}</BottomSubNav>}
+            <div className="main-body-content">
+              {leftSubNav && <LeftSubNav>{leftSubNavCon}</LeftSubNav>}
+
+              <div className="content">
+                {topSubNav && <TopSubNav>{topSubNavCon}</TopSubNav>}
+                  <Outlet />
+                {bottomSubNav && <BottomSubNav>{bottomSubNavCon}</BottomSubNav>}
+              </div>
+
+
+              {rightSubNav && <RightSubNav>{rightSubNavCon}</RightSubNav>}
             </div>
-            {rightSubNav && <RightSubNav>{rightSubNavCon}</RightSubNav>}
-            
+
+            {bottomNav && <BottomNav>{bottomNavCon}</BottomNav>}
           </div>
 
-          {/** Bottom Nav */}
-          {bottomNav && <BottomNav>{bottomNavCon}</BottomNav>}
+          {rightNav && <RightNav>{rightNavCon}</RightNav>}
 
         </div>
-        {rightNav && <RightNav>{rightNavCon}</RightNav>}
+        
 
         
       </div>

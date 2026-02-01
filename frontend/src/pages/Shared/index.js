@@ -19,6 +19,8 @@ export { default as AuthInput } from './Input/AuthInput';
 export { default as ModalInput } from './Input/ModalInput';
 export { default as PrimaryInput } from './Input/PrimaryInput';
 export { default as SecondaryInput } from './Input/SecondaryInput';
+export { default as CommentInput } from './Input/CommentInput';
+
 
 /** Loader */
 export { default as SkeletonLoader } from './Loader/SkeletonLoader';

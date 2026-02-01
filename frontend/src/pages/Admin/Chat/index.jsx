@@ -1,6 +1,8 @@
 import './__index.scss';
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
 import { useEffect } from 'react';
+import { CommentInput } from '@/pages/Shared';
+
 
 // import content
 import LeftSubNav from "./Component/LeftSubNav";
@@ -80,6 +82,17 @@ const Chat = () => {
                     </small>
                 </div>
             </div>
+        </section>
+
+        <section className="chat-texting">
+            <button className="btn-add">
+                <i className="mdi mdi-plus-thick"></i>
+            </button>
+            <button className="btn-add">
+                <i className="mdi mdi-plus-thick"></i>
+            </button>
+            <CommentInput />
+            <button className="btn-send">Send</button>
         </section>
     </>;
 }

@@ -55,3 +55,14 @@
         }
     }
 }
+
+.chat-texting {
+    position: sticky;
+    bottom: 0;
+    left: 220px;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}

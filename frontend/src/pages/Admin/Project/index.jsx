@@ -2,7 +2,7 @@ import { useGlobalStore } from "@/hooks/GlobalStore.context";
 import { useEffect } from 'react';
 
 // import content
-import LeftSubNav from "./Component/LeftSubNav";
+import LeftNav from "./Component/LeftNav";
 import TopSubNav from "./Component/TopSubNav";
 import MansoryLayout from "./Component/MansoryLayout";
 
@@ -31,8 +31,8 @@ const Project = () => {
 
     useEffect(() => {
         setTopNav(true);
-        setLeftSubNav(true);
-        setLeftSubNavCon(<LeftSubNav/>);
+        setLeftNav(true);
+        setLeftNavCon(<LeftNav/>);
         setTopSubNav(true);
         setTopSubNavCon(<TopSubNav/>);
 

@@ -35,7 +35,9 @@ const Dashboard = () => {
 
     useEffect(() => {
         setTopNav(true);
-        loadMessages();
+        setLeftNav(false);
+        setTopSubNav(false);
+        // loadMessages();
     }, [])
 
     return <>
@@ -365,14 +367,16 @@ const Dashboard = () => {
                     </div>
 
                     <div class="info">
-                        <div className="calender">
+                        {/*<div className="calender">
                             <SmallCalender viewMonth={true}/>
                         </div>
                         <div className="calender-listing">
                             <div className="each-task">
                                 <div className="name">Maxwell Global</div>
                             </div>
-                        </div>
+                        </div>*/}
+
+                        
                     </div>
                 </div>
             </section>

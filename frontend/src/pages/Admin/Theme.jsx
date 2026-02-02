@@ -1,7 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AuthButton, CancelButton, DownloadButton, ModalButton, MoreButton, PrimaryButton, SecondaryButton, ThirdButton, SubmitButton } from '@/pages/Shared';
+import { BarChart, LineChart, ProgressBar } from '@/pages/Shared';
+import { AuthInput, CommentInput, ModalInput, PrimaryInput, SecondaryInput } from '@/pages/Shared';
+import { SkeletonLoader } from '@/pages/Shared';
+import { PrimaryPopover } from '@/pages/Shared';
+import { AuthPopup, PrimaryPopup, SecondaryPopup } from '@/pages/Shared';
+import { AuthSelect, ModalSelect, PrimarySelect, SecondarySelect } from '@/pages/Shared';
+import { AuthTextField, ModalTextField, PrimaryTextField, SecondaryTextField } from '@/pages/Shared';
 
 const Theme = () => {
+
+    const [openModal, setOpenModal] = useState(false);
 
     useEffect(() => {
 
@@ -15,7 +24,7 @@ const Theme = () => {
             <div className="comp">
                 <div className="main-title">Buttons</div>
                 <div className="comp-content">
-                    <AuthButton>
+                    <AuthButton tooltip="auth button tooltip">
                         <span>Auth</span>
                     </AuthButton>
                     <CancelButton>
@@ -151,7 +160,17 @@ const Theme = () => {
             <div className="comp">
                 <div className="main-title">Popover</div>
                 <div className="comp-content">
-                    
+                    <PrimaryPopover
+                        content={
+                            <div>
+                            <b>提示</b>
+                            <p>3 秒后自动消失</p>
+                            </div>
+                        }
+                    >
+                        <AuthButton>Hover</AuthButton>
+                    </PrimaryPopover>
+
                 </div>
             </div>
 
@@ -159,9 +178,13 @@ const Theme = () => {
             <div className="comp">
                 <div className="main-title">Popup</div>
                 <div className="comp-content">
-                    <AuthButton>
+                    <AuthButton onClick={() => setOpenModal(true)}>
                         <span>Show Popup</span>
                     </AuthButton>
+
+                    <AuthPopup isOpen={openModal} onClose={() => setOpenModal(false)}>
+                        this is popup content
+                    </AuthPopup>
                 </div>
             </div>
 

@@ -1,4 +1,105 @@
 :root[data-theme="theme1"][data-mode="day-mode"] {
+    --auth-button-bg: radial-gradient(ellipse at bottom,#45a5ff,#0348f2 70%);
+    --auth-button-text: .75rem;
+    --auth-button-color: #eafbfc;
+    --auth-button-weight: 500;
+    --auth-button-border: none;
+    --auth-button-boxshadow: none;
+    --auth-btnhover-bg: radial-gradient(ellipse at bottom,#45a5ff,#0348f2 70%);
+    --auth-btnhover-text: .75rem;
+    --auth-btnhover-color: #eafbfc;
+    --auth-btnhover-border: none;
+    --auth-btnhover-boxshadow: none;
+}
+:root[data-theme="theme1"][data-mode="night-mode"] {
+    --auth-button-bg: #242a3a;
+    --auth-button-text: .75rem;
+    --auth-button-color: #e2feff;
+    --auth-button-weight: 500;
+    --auth-button-border: none;
+    --auth-button-boxshadow: none;
+    --auth-btnhover-bg: radial-gradient(ellipse at bottom,#45daff,#0348f2 70%);
+    --auth-btnhover-text: .75rem;
+    --auth-btnhover-color: #eafbfc;
+    --auth-btnhover-border: none;
+    --auth-btnhover-boxshadow: none;
+}
+
+/* Auth */
+.wrapper {
+    display: inline;
+    position: relative;
+    & .tooltip {
+        position: absolute;
+        top: -1.5rem;
+        border-radius: 3px;
+        background: #131e38;
+        font-size: .75rem;
+        white-space: nowrap;
+        padding: .15rem;
+        display: none;
+
+        &.show {
+            display: block;
+        }
+    }
+}
+.AuthButton {
+    cursor: pointer;
+    border: var(--auth-button-border);
+    outline: none;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    font-size: var(--auth-button-text);
+    font-weight: var(--auth-button-weight);
+    color: var(--auth-button-color);
+    background: var(--auth-button-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    box-shadow: var(--auth-button-boxshadow);
+
+    &:hover {
+        background: var(--auth-btnhover-bg);
+        font-size: var(--auth-btnhover-text);
+        color: var(--auth-btnhover-color);
+        border: var(--auth-btnhover-border);
+        box-shadow: var(--auth-btnhover-boxshadow);
+    }
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+    &.pending {
+        pointer-events: none;
+    }
+
+    & .loader {
+        width: 16px;
+        height: 16px;
+        border: 2px solid #fff;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    & > img {
+        width: var(--auth-button-text);
+        height: auto;
+    }
+
+    @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+    }
+}
+
+
+
+
+:root[data-theme="theme1"][data-mode="day-mode"] {
     --submit-button-bg: radial-gradient(ellipse at bottom,#45a5ff,#0348f2 70%);
     --submit-button-text: .875rem;
     --submit-button-color: #eafbfc;

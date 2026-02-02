@@ -1,13 +1,13 @@
 import mod from './__index__.module.scss';
 
-export const ThirdButton = ({ children, onClick }) => {
+export const CancelButton = ({ children, onClick }) => {
 
 
     return <>
-    <button onClick={onClick} className={`${mod.ThirdButton}`}>
+    <button onClick={onClick} className={`${mod.CancelButton}`}>
       {children}
     </button>
     </>;
 }
 
-export default ThirdButton;
+export default CancelButton;

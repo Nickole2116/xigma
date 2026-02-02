@@ -27,7 +27,6 @@ export { default as SkeletonLoader } from './Loader/SkeletonLoader';
 
 /** Popover */
 export { default as PrimaryPopover } from './Popover/PrimaryPopover';
-export { default as Tooltip } from './Popover/Tooltip';
 
 /** Popup */
 export { default as AuthPopup } from './Popup/AuthPopup';

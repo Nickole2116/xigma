@@ -1,8 +1,9 @@
 <?php
-
-use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\TelegramBotController;
 use App\Http\Controllers\Api\TelegramClientController;
+
+use App\Http\Controllers\Page\AuthController;
+
 
 use Illuminate\Http\Request;
 

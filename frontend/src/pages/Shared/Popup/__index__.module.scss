@@ -12,6 +12,7 @@
         width: 420px;
         border-radius: 8px;
         animation: popupIn 0.2s ease;
+        position: relative;
         & .AuthPopupHeader {
             display: flex;
             justify-content: space-between;
@@ -22,6 +23,7 @@
                 border: none;
                 font-size: 18px;
                 cursor: pointer;
+                
             }
         }
         & .AuthPopupBody {

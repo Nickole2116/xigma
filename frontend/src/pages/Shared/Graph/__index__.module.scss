@@ -1,5 +1,72 @@
+.chart {
+    display: flex;
+    align-items: flex-end;
+    height: 200px;
+    gap: 12px;
+  }
+  
+  .barWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .barContainer {
+    height: 100%;
+    width: 24px;
+    display: flex;
+    align-items: flex-end;
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .bar {
+    width: 100%;
+    background: #4f46e5;
+    border-radius: 4px 4px 0 0;
+    transition: height 0.3s ease;
+  }
+  
+  .label {
+    margin-top: 6px;
+    font-size: 12px;
+  }
 
-/* Auth */
-.auth {
-    color: red;
+
+
+/* line */
+.linechart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & .line {
+        fill: none;
+        stroke: #4f46e5;
+        stroke-width: 2;
+    }
+
+    & .dot {
+        fill: #4f46e5;
+        cursor: pointer;
+    }
+      
+    & .dot:hover {
+        fill: #22c55e;
+    }
+      
+    & .labels {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        font-size: 12px;
+        margin-top: 6px;
+    }
 }
+  
+
+  
+  
+  
+  

@@ -1,5 +1,98 @@
+/* Theme 1 - Day Mode */
+:root[data-theme="theme1"][data-mode="day-mode"] {
+    --auth-input-full-bg: #ededed;
+    --auth-label-text: .813rem;
+    --auth-label-color: var(--text-sub);
+    --auth-label-bg: transparent;
+    --auth-label-weight: 600;
+    --auth-input-text: .875rem;
+    --auth-input-bg: transparent;
+    --auth-input-weight: 500;
+    --auth-input-color: #000;
+    --auth-input-placeholder-text: .875rem;
+    --auth-input-placeholder-bg: transparent;
+    --auth-input-placeholder-weight: 500;
+    --auth-input-placeholder-color: var(--text-sub-secondary);
+    --auth-input-hint-text: 1rem;
+    --auth-input-hint-bg: transparent;
+    --auth-input-hint-weight: 500;
+    --auth-input-hint-color: #65aef6;
+    --auth-error-text: .75rem;
+    --auth-error-bg: transparent;
+    --auth-error-weight: 500;
+    --auth-error-color: var(--fail);
+}
+:root[data-theme="theme1"][data-mode="night-mode"] {
+    --auth-input-full-bg: #101622;
+    --auth-label-text: .813rem;
+    --auth-label-color: var(--highlight);
+    --auth-label-bg: transparent;
+    --auth-label-weight: 600;
+    --auth-input-text: .875rem;
+    --auth-input-bg: transparent;
+    --auth-input-weight: 600;
+    --auth-input-color: #fff;
+    --auth-input-placeholder-text: .875rem;
+    --auth-input-placeholder-bg: transparent;
+    --auth-input-placeholder-weight: 500;
+    --auth-input-placeholder-color: var(--text-sub-secondary);
+    --auth-input-hint-text: 1rem;
+    --auth-input-hint-bg: transparent;
+    --auth-input-hint-weight: 500;
+    --auth-input-hint-color: #65aef6;
+    --auth-error-text: .75rem;
+    --auth-error-bg: transparent;
+    --auth-error-weight: 500;
+    --auth-error-color: var(--fail);
+}
 
 /* Auth */
-.auth {
-    color: red;
+.AuthInput {
+    background: var(--auth-input-full-bg);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .675rem 1rem;
+    border-radius: 10px;
+    & label {
+        background: var(--auth-label-bg);
+        color: var(--auth-label-color);
+        font-size: var(--auth-label-text);
+        font-weight: var(--auth-label-weight);
+        text-transform: capitalize;
+        width: 80px;
+    }
+    & select {
+        outline: none;
+        border: none;
+        background: var(--auth-input-bg);
+        color: var(--auth-input-color);
+        font-size: var(--auth-input-text);
+        font-weight: var(--auth-input-weight);
+        letter-spacing: .6px;
+
+        &::placeholder {
+            background: var(--auth-input-placeholder-bg);
+            color: var(--auth-input-placeholder-color);
+            font-size: var(--auth-input-placeholder-text);
+            font-weight: var(--auth-input-placeholder-weight);
+        }
+    }
+    & button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: var(--auth-input-hint-bg);
+        color: var(--auth-input-hint-color);
+        margin-right: -.5rem;
+        & i {
+            font-size: var(--auth-input-hint-text);
+            color: var(--auth-input-hint-color);
+        }
+        & span {
+            font-size: var(--auth-input-hint-text);
+            color: var(--auth-input-hint-color);
+            font-weight: var(--auth-input-hint-weight);
+        }
+    }
 }

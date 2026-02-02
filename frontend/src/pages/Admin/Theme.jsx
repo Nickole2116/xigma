@@ -58,33 +58,26 @@ const Theme = () => {
             <div className="comp">
                 <div className="main-title">Graphs</div>
                 <div className="comp-content">
-                    <AuthButton>
-                        <span>Auth</span>
-                    </AuthButton>
-                    <CancelButton>
-                        <span>Cancel</span>
-                    </CancelButton>
-                    <DownloadButton>
-                        <span>Download</span>
-                    </DownloadButton>
-                    <ModalButton>
-                        <span>Modal</span>
-                    </ModalButton>
-                    <MoreButton>
-                        <span>More</span>
-                    </MoreButton>
-                    <PrimaryButton>
-                        <span>Primary</span>
-                    </PrimaryButton>
-                    <SecondaryButton>
-                        <span>Secondary</span>
-                    </SecondaryButton>
-                    <SubmitButton>
-                        <span>Submit</span>
-                    </SubmitButton>
-                    <ThirdButton>
-                        <span>Third Button</span>
-                    </ThirdButton>
+                    <BarChart
+                        data={[
+                            { label: 'Jan', value: 40 },
+                            { label: 'Feb', value: 70 },
+                            { label: 'Mar', value: 55 },
+                        ]}
+                        max={100}
+                    />
+
+                    <LineChart
+                        data={[
+                            { label: 'Mon', value: 20 },
+                            { label: 'Tue', value: 40 },
+                            { label: 'Wed', value: 30 },
+                            { label: 'Thu', value: 70 },
+                            { label: 'Fri', value: 55 },
+                        ]}
+                        max={100}
+                    />
+
                 </div>
             </div>
 
@@ -92,33 +85,13 @@ const Theme = () => {
             <div className="comp">
                 <div className="main-title">Inputs</div>
                 <div className="comp-content">
-                    <AuthButton>
-                        <span>Auth</span>
-                    </AuthButton>
-                    <CancelButton>
-                        <span>Cancel</span>
-                    </CancelButton>
-                    <DownloadButton>
-                        <span>Download</span>
-                    </DownloadButton>
-                    <ModalButton>
-                        <span>Modal</span>
-                    </ModalButton>
-                    <MoreButton>
-                        <span>More</span>
-                    </MoreButton>
-                    <PrimaryButton>
-                        <span>Primary</span>
-                    </PrimaryButton>
-                    <SecondaryButton>
-                        <span>Secondary</span>
-                    </SecondaryButton>
-                    <SubmitButton>
-                        <span>Submit</span>
-                    </SubmitButton>
-                    <ThirdButton>
-                        <span>Third Button</span>
-                    </ThirdButton>
+                    <AuthInput
+                        type="text"
+                        InternalLabel="User Code"
+                        placeholder="e.g 17876"
+                        Error={'-'}
+                    />
+                    
                 </div>
             </div>
 
@@ -126,33 +99,9 @@ const Theme = () => {
             <div className="comp">
                 <div className="main-title">Loader</div>
                 <div className="comp-content">
-                    <AuthButton>
-                        <span>Auth</span>
-                    </AuthButton>
-                    <CancelButton>
-                        <span>Cancel</span>
-                    </CancelButton>
-                    <DownloadButton>
-                        <span>Download</span>
-                    </DownloadButton>
-                    <ModalButton>
-                        <span>Modal</span>
-                    </ModalButton>
-                    <MoreButton>
-                        <span>More</span>
-                    </MoreButton>
-                    <PrimaryButton>
-                        <span>Primary</span>
-                    </PrimaryButton>
-                    <SecondaryButton>
-                        <span>Secondary</span>
-                    </SecondaryButton>
-                    <SubmitButton>
-                        <span>Submit</span>
-                    </SubmitButton>
-                    <ThirdButton>
-                        <span>Third Button</span>
-                    </ThirdButton>
+                    <SkeletonLoader width="200px" height="20px" />
+                    <SkeletonLoader height="40px" radius="10px" />
+                    
                 </div>
             </div>
 
@@ -192,7 +141,14 @@ const Theme = () => {
             <div className="comp">
                 <div className="main-title">Select</div>
                 <div className="comp-content">
-                    
+                    <AuthSelect
+                        type="text"
+                        InternalLabel="User Code"
+                        placeholder="e.g 17876"
+                        Error={'-'}
+                    >
+                        <option>sss</option>
+                    </AuthSelect>
                 </div>
             </div>
 

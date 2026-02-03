@@ -1,6 +1,8 @@
 {
     "key": "English",
     "welcome": "Welcome",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+
+    "user_code": "User Code"
 }
   

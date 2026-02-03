@@ -16,7 +16,7 @@ export const GlobalStoreProvider = ({ children }) => {
   const [leftNavCon, setLeftNavCon] = useState(null);
   const [rightNav, setRightNav] = useState(false);
   const [rightNavCon, setRightNavCon] = useState(null);
-  const [bottomNav, setBottomNav] = useState(false);
+  const [bottomNav, setBottomNav] = useState(true);
   const [bottomNavCon, setBottomNavCon] = useState(null);
   const [topSubNav, setTopSubNav] = useState(false);
   const [topSubNavCon, setTopSubNavCon] = useState(null);
@@ -24,7 +24,7 @@ export const GlobalStoreProvider = ({ children }) => {
   const [leftSubNavCon, setLeftSubNavCon] = useState(null);
   const [rightSubNav, setRightSubNav] = useState(false);
   const [rightSubNavCon, setRightSubNavCon] = useState(null);
-  const [bottomSubNav, setBottomSubNav] = useState(true);
+  const [bottomSubNav, setBottomSubNav] = useState(false);
   const [bottomSubNavCon, setBottomSubNavCon] = useState(null);
   const [isPageLoading, setIsPageLoading] = useState(true);
 

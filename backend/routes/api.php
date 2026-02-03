@@ -23,6 +23,9 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/', [AuthController::class, 'index']);
 Route::get('/users', [AuthController::class, 'index']);
 
+// admin routes 
+Route::post('/admin/login_as_form', [AuthController::class, 'adminLogin'])->name('admin_login');
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', fn (Request $request) => $request->user());

@@ -1,6 +1,6 @@
 import './dashboard.scss';
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ThirdButton, SubmitButton, CancelButton, MoreButton, DownloadButton } from '@/pages/Shared';
 import { getTelegramProfile, getTelegramUpdates, loginTelegramClient } from "@/services/modules/telegramclient.service";
 import SmallCalender from '@/pages/Admin/Components/Calender/SmallCalender';
@@ -33,11 +33,50 @@ const Dashboard = () => {
       console.log(data)
     }
 
+    const [time, setTime] = useState({
+        year: "",
+        month: "",
+        day: "",
+        daySuffix: "",
+        hour: "--",
+        minutes: "--",
+        seconds: "--",
+    });
+    const refreshNowTime = () => {
+        const interval = setInterval(() => {
+            const date = new Date();
+            const day = date.getDate();
+      
+            setTime({
+              year: date.getFullYear(),
+              month: pad2(date.getMonth() + 1), // JS month is 0-based
+              day,
+              daySuffix: getDaySuffix(day),
+              hour: pad2(date.getHours()),
+              minutes: String(date.getMinutes()).padStart(2, "0"),
+              seconds: String(date.getSeconds()).padStart(2, "0"),
+            });
+        }, 1000);
+      
+        return () => clearInterval(interval);
+    }
+    const pad2 = (num) => String(num).padStart(2, "0");
+    const getDaySuffix = (day) => {
+        switch (day) {
+            case 1: return 'st';
+            case 2: return 'nd';
+            case 3: return 'rd';
+            default: return 'th';
+        }
+    }
+
     useEffect(() => {
         setTopNav(true);
         setLeftNav(false);
         setTopSubNav(false);
         // loadMessages();
+
+        refreshNowTime();
     }, [])
 
     return <>
@@ -45,7 +84,7 @@ const Dashboard = () => {
             {/** Banner */}
             <section className="banner">
                 <div className="date">
-                    <h2>21<b>th</b></h2>
+                    <h2>{time.day}<b>{getDaySuffix(time.day)}</b></h2>
                     <div className="info">
                         <h5>Mon.</h5>
                         <span>January</span>
@@ -53,7 +92,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="welcome">
-                    <div className="time">20<b>:</b>59</div>
+                    <div className="time">{time.hour}<b>:</b>{time.minutes}</div>
                     <div className="main">Welcome Back, Tan Nickole</div>
                 </div>
 
@@ -376,7 +415,7 @@ const Dashboard = () => {
                             </div>
                         </div>*/}
 
-                        
+
                     </div>
                 </div>
             </section>

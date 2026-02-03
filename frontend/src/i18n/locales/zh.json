@@ -6,6 +6,10 @@
     "chats": "聊天室",
     "drive": "云端资料库",
     "finance": "金融服务",
-    "theme": "共享主题"
+    "theme": "共享主题",
+
+    "user_code": "登录代号",
+    "access_key": "连接匙",
+    "proceed_login": "继续至登录"
 }
   

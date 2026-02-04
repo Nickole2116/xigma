@@ -25,6 +25,7 @@ Route::get('/users', [AuthController::class, 'index']);
 
 // admin routes 
 Route::post('/admin/login_as_form', [AuthController::class, 'adminLogin'])->name('admin_login');
+Route::post('/admin/verify_token', [AuthController::class, 'verifyToken'])->name('verify_token');
 
 
 Route::middleware('auth:sanctum')->group(function () {

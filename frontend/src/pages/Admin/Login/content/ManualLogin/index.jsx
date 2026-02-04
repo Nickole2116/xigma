@@ -37,6 +37,19 @@ export const ManualLogin = () => {
       toast.error(err.response.data.message);
     }
   };
+
+  const verifyToken = async (token) => {
+    try {
+      const res = await verifyToken(token);
+      if(res.status === 200){
+        navigate('/admin/dashboard');
+      }
+    } catch (err) {
+      console.error("verifyToken failed:", err);
+      toast.error(err.response.data.message);
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="auth-form">
       <AuthInput

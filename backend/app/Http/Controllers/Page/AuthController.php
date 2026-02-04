@@ -15,6 +15,8 @@ use Carbon\Carbon;
 use DateTime;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
+
 
 class AuthController extends Controller
 {
@@ -43,20 +45,25 @@ class AuthController extends Controller
 
     public function adminLogin(Request $request, Admin $admin, AdminLogin $admin_login)
     {
+
+        /*try {
+            $result = Storage::disk('s3')->put('debug-test.txt', 'ok');
+        
+            return response()->json([
+                'result' => $result,
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], 500);
+        }*/
+
+
         $request->validate([
             'username' => 'required|string',
             'access_key' => 'required|string',
         ]);
-        // first time login to me
-        /*$admin = Admin::create([
-            'name' => $request->username,
-            'access_key' => Hash::make($request->access_key),
-            'phone' => '0143012116',
-            'phone_prefix' => '+60',
-            'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
-            'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
-            'remember_token' => Str::random(10),
-        ]);*/
+        
         $user = Admin::where('name', $request->username)->first();
         if(!$user){
             return response()->json([
@@ -73,7 +80,7 @@ class AuthController extends Controller
                 if (!$lastLogin || $lastLogin->created_at->diffInHours(now()) >= 1) {
                     $token = Hash::make('ADMIN_TOKEN_'.$user->id.'_'.$request->userAgent().'_'.$request->ip());
 
-                    $admin_login = AdminLogin::create([
+                    $admin_login_new = AdminLogin::create([
                         'user_id' => $user->id,
                         'user_agent' => $request->userAgent(),
                         'client_ip' => $request->ip(),
@@ -113,6 +120,37 @@ class AuthController extends Controller
             'user' => $user,
         ]);
 
+    }
+
+    public function createAdmin(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string',
+            'access_key' => 'required|string',
+        ]);
+        
+        $admin = Admin::create([
+            'name' => $request->name,
+            'access_key' => Hash::make($request->access_key),
+            'phone' => '0143012116',
+            'phone_prefix' => '+60',
+            'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+            'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+        ]);
+        return response()->json(['message' => 'Admin created successfully', 'admin' => $admin]);
+    }
+
+    public function verifyToken(Request $request) {
+        $latest_token = Cache::get('ACCESS_TOKEN_ADMIN_'.$request->user_id);
+        if(!$latest_token){
+            // not found - expired and no login
+            return response()->json(['status' => 401, 'message' => 'Token not found'], 401);
+        } else if (Hash::check($request->token, $latest_token)) {
+            return response()->json(['status' => 401, 'message' => 'Token Not verified'], 401);
+        } else {
+            return response()->json(['status' => 200, 'message' => 'Token verified'], 200);
+        }
+        
     }
 
     public function logout(Request $request)

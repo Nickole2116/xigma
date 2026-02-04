@@ -7,6 +7,9 @@ import api from '../api'
 export const login = (payload) => {
   return api.post('/admin/login_as_form', payload)
 }
+export const verifyToken = (payload) => {
+  return api.post('/admin/verify_token', payload)
+}
 export const gets = (params) => {
   return api.get('/users', { params })
 }

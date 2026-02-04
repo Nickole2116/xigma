@@ -43,21 +43,22 @@ class AuthController extends Controller
         ]);
     }
 
+    public function checkTokenByUserId($uid) {
+        $lastLogin = AdminLogin::where('user_id', $uid)
+                        ->latest('created_at')
+                        ->first();
+
+        if(!$lastLogin || $lastLogin->created_at->diffInHours(now()) >= 1){
+            return Str::uuid();
+        } else {
+            $lastToken = Cache::get('ACCESS_ADMIN_LOGIN_'.$uid);
+            return $lastToken;
+        }
+
+    }
+
     public function adminLogin(Request $request, Admin $admin, AdminLogin $admin_login)
     {
-
-        /*try {
-            $result = Storage::disk('s3')->put('debug-test.txt', 'ok');
-        
-            return response()->json([
-                'result' => $result,
-            ]);
-        } catch (\Throwable $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ], 500);
-        }*/
-
 
         $request->validate([
             'username' => 'required|string',
@@ -78,25 +79,23 @@ class AuthController extends Controller
                         ->first();
 
                 if (!$lastLogin || $lastLogin->created_at->diffInHours(now()) >= 1) {
-                    $token = Hash::make('ADMIN_TOKEN_'.$user->id.'_'.$request->userAgent().'_'.$request->ip());
+                    $now = Carbon::now()->setTimezone('Asia/Kuala_Lumpur');
+                    $token = Str::uuid();
 
                     $admin_login_new = AdminLogin::create([
                         'user_id' => $user->id,
                         'user_agent' => $request->userAgent(),
                         'client_ip' => $request->ip(),
                         'token' => $token,
-                        'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
-                        'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+                        'created_at' => $now,
+                        'updated_at' => $now,
                     ]);
 
-                    Cache::put('ACCESS_TOKEN_ADMIN_'.$user->id, $token, now()->addHours(1));
+                    Cache::put('ACCESS_ADMIN_LOGIN_'.$user->id, $token, now()->addHours(1));
                 } else {
-                    $token = Hash::make('ADMIN_TOKEN_'.$user->id.'_'.$request->userAgent().'_'.$request->ip());
+                    $now = Carbon::now()->setTimezone('Asia/Kuala_Lumpur');
                     $lastLogin->update([
-                        'user_agent' => $request->userAgent(),
-                        'client_ip' => $request->ip(),
-                        'token' => $token,
-                        'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur')
+                        'updated_at' => $now,
                     ]);
                 }
 
@@ -132,25 +131,38 @@ class AuthController extends Controller
         $admin = Admin::create([
             'name' => $request->name,
             'access_key' => Hash::make($request->access_key),
-            'phone' => '0143012116',
-            'phone_prefix' => '+60',
+            'phone' => null,
+            'phone_prefix' => null,
             'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
             'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
         ]);
-        return response()->json(['message' => 'Admin created successfully', 'admin' => $admin]);
+        return response()->json([
+            'status' => 200, 
+            'name' => $request->name,
+            'access_key' => $request->access_key,
+            'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+            'message' => 'Admin created successfully', 
+            'admin' => $admin
+        ]);
     }
 
     public function verifyToken(Request $request) {
-        $latest_token = Cache::get('ACCESS_TOKEN_ADMIN_'.$request->user_id);
-        if(!$latest_token){
-            // not found - expired and no login
+        $current_token = $request->token;
+        $current_token_info = AdminLogin::where('token', $current_token)->latest()->first();
+
+        if(!$current_token_info){
             return response()->json(['status' => 401, 'message' => 'Token not found'], 401);
-        } else if (Hash::check($request->token, $latest_token)) {
-            return response()->json(['status' => 401, 'message' => 'Token Not verified'], 401);
         } else {
-            return response()->json(['status' => 200, 'message' => 'Token verified'], 200);
+            $latest_token = Cache::get('ACCESS_ADMIN_LOGIN_'.$current_token_info->user_id);
+            if($latest_token != $current_token){
+                return response()->json(['status' => 402, 'message' => 'Token not matched', 'latest_token' => $latest_token, 'current_token' => $current_token], 401);
+            } else if ($current_token_info->created_at->diffInHours(now()) >= 1){
+                return response()->json(['status' => 403, 'message' => 'Token expired'], 401);
+            } else {
+                return response()->json(['status' => 200, 'message' => 'Token verified'], 200);
+            }
         }
-        
+        return response()->json(['status' => 401, 'message' => 'Token not found'], 401);
     }
 
     public function logout(Request $request)

@@ -4,7 +4,7 @@ export const handleError = (error) => {
   
       if (status === 401) {
         localStorage.removeItem('access_token')
-        window.location.href = '/login'
+        //window.location.href = '/admin'
       }
   
       return Promise.reject(data?.message || 'Request failed')

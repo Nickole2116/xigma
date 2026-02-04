@@ -1,12 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import { AuthButton, AuthInput, SubmitButton } from '@/pages/Shared';
 import { ManualLoginSchema } from '@/validations/ManualLogin.schema';
 import { useTranslation } from 'react-i18next'
 
-import { login } from "@/services/modules/admin.service";
+import { login, verifyToken } from "@/services/modules/admin.service";
 
 
 
@@ -38,17 +39,18 @@ export const ManualLogin = () => {
     }
   };
 
-  const verifyToken = async (token) => {
-    try {
-      const res = await verifyToken(token);
-      if(res.status === 200){
+  const verifyPageToken = async () => {
+      const res = await verifyToken({ token: localStorage.getItem('ACCESS_TOKEN') });
+      if (res.status === 200) {
         navigate('/admin/dashboard');
+      } else {
+        console.log(res);
+        toast.error(res.message);
       }
-    } catch (err) {
-      console.error("verifyToken failed:", err);
-      toast.error(err.response.data.message);
-    }
   };
+  useEffect(() => {
+    verifyPageToken();
+  }, []);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="auth-form">

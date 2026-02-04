@@ -6,5 +6,5 @@ export const ManualLoginSchema = z.object({
     .min(3, 'User Code must be at least 3 characters'),
   access_key: z
     .string()
-    .min(20, 'Access Key must be at least 20 characters'),
+    .min(4, 'Access Key must be at least 4 characters'),
 });

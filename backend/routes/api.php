@@ -3,7 +3,7 @@ use App\Http\Controllers\Api\TelegramBotController;
 use App\Http\Controllers\Api\TelegramClientController;
 
 use App\Http\Controllers\Page\AuthController;
-
+use App\Http\Controllers\Page\OrderController;
 
 use Illuminate\Http\Request;
 
@@ -26,6 +26,7 @@ Route::get('/users', [AuthController::class, 'index']);
 // admin routes 
 Route::post('/admin/login_as_form', [AuthController::class, 'adminLogin'])->name('admin_login');
 Route::post('/admin/verify_token', [AuthController::class, 'verifyToken'])->name('verify_token');
+Route::post('/admin/create_order', [OrderController::class, 'createOrder'])->name('create_order');
 
 
 Route::middleware('auth:sanctum')->group(function () {

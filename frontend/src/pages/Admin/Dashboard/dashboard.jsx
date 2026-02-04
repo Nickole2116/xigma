@@ -1,9 +1,10 @@
 import './dashboard.scss';
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
 import { useEffect, useState } from "react";
-import { ThirdButton, SubmitButton, CancelButton, MoreButton, DownloadButton } from '@/pages/Shared';
+import { ThirdButton, SubmitButton, CancelButton, MoreButton, DownloadButton, ThirdPopup } from '@/pages/Shared';
 import { getTelegramProfile, getTelegramUpdates, loginTelegramClient } from "@/services/modules/telegramclient.service";
 import SmallCalender from '@/pages/Admin/Components/Calender/SmallCalender';
+import CreateOrderContent from './Compoenent/CreateOrderContent';
 
 const Dashboard = () => {
     const { theme, setTheme,
@@ -27,6 +28,7 @@ const Dashboard = () => {
         bottomSubNavCon, setBottomSubNavCon,
         isPageLoading, setIsPageLoading
     } = useGlobalStore();
+    const [createOrderModal, setCreateOrderModal] = useState(false);
 
     const loadMessages = async () => {
       const data = await loginTelegramClient()
@@ -109,7 +111,8 @@ const Dashboard = () => {
                     <div className="header">
                         <div className="title">New Request</div>
                         <div className="action">
-                            <ThirdButton>Create New</ThirdButton>
+                            <ThirdButton onClick={() => setCreateOrderModal(true)}>Create New</ThirdButton>
+                            
                         </div>
                     </div>
                     
@@ -421,6 +424,14 @@ const Dashboard = () => {
             </section>
 
         </div>
+
+        <ThirdPopup
+            isOpen={createOrderModal}
+            onClose={() => setCreateOrderModal(false)}
+            title="Create New Order"
+        >
+            <CreateOrderContent />
+        </ThirdPopup>
     </>;
 };
   

@@ -13,3 +13,7 @@ export const verifyToken = (payload) => {
 export const gets = (params) => {
   return api.get('/users', { params })
 }
+
+export const createOrder = (payload) => {
+  return api.post('/admin/create_order', payload)
+}

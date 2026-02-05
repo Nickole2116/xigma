@@ -255,3 +255,132 @@
 
 
 
+/* Theme 1 - Day Mode */
+:root[data-theme="theme1"][data-mode="day-mode"] {
+    --modal-input-full-bg: #ededed;
+    --modal-label-text: .813rem;
+    --modal-label-color: var(--text-sub);
+    --modal-label-bg: transparent;
+    --modal-label-weight: 600;
+    --modal-input-text: .875rem;
+    --modal-input-bg: transparent;
+    --modal-input-weight: 500;
+    --modal-input-color: #000;
+    --modal-input-placeholder-text: .875rem;
+    --modal-input-placeholder-bg: transparent;
+    --modal-input-placeholder-weight: 500;
+    --modal-input-placeholder-color: var(--text-sub-secondary);
+    --modal-input-hint-text: 1rem;
+    --modal-input-hint-bg: transparent;
+    --modal-input-hint-weight: 500;
+    --modal-input-hint-color: #65aef6;
+    --modal-error-text: .75rem;
+    --modal-error-bg: transparent;
+    --modal-error-weight: 500;
+    --modal-error-color: var(--fail);
+}
+:root[data-theme="theme1"][data-mode="night-mode"] {
+    --modal-input-full-bg: #101622;
+    --modal-label-text: .813rem;
+    --modal-label-color: var(--highlight);
+    --modal-label-bg: transparent;
+    --modal-label-weight: 600;
+    --modal-input-text: .875rem;
+    --modal-input-bg: transparent;
+    --modal-input-weight: 600;
+    --modal-input-color: #fff;
+    --modal-input-placeholder-text: .875rem;
+    --modal-input-placeholder-bg: transparent;
+    --modal-input-placeholder-weight: 500;
+    --modal-input-placeholder-color: var(--text-sub-secondary);
+    --modal-input-hint-text: 1rem;
+    --modal-input-hint-bg: transparent;
+    --modal-input-hint-weight: 500;
+    --modal-input-hint-color: #65aef6;
+    --modal-error-text: .75rem;
+    --modal-error-bg: transparent;
+    --modal-error-weight: 500;
+    --modal-error-color: var(--fail);
+}
+
+/* Modal */
+.ModalInput {
+    background: var(--modal-input-full-bg);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: .675rem 1rem;
+    border-radius: 10px;
+    & label {
+        background: var(--modal-label-bg);
+        color: var(--modal-label-color);
+        font-size: var(--modal-label-text);
+        font-weight: var(--modal-label-weight);
+        text-transform: capitalize;
+        width: 80px;
+    }
+    & input {
+        outline: none;
+        border: none;
+        background: var(--modal-input-bg);
+        color: var(--modal-input-color);
+        font-size: var(--modal-input-text);
+        font-weight: var(--modal-input-weight);
+        letter-spacing: .6px;
+
+        &::placeholder {
+            background: var(--modal-input-placeholder-bg);
+            color: var(--modal-input-placeholder-color);
+            font-size: var(--modal-input-placeholder-text);
+            font-weight: var(--modal-input-placeholder-weight);
+        }
+    }
+    & button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        background: var(--modal-input-hint-bg);
+        color: var(--modal-input-hint-color);
+        margin-right: -.5rem;
+        & i {
+            font-size: var(--modal-input-hint-text);
+            color: var(--modal-input-hint-color);
+        }
+        & span {
+            font-size: var(--modal-input-hint-text);
+            color: var(--modal-input-hint-color);
+            font-weight: var(--modal-input-hint-weight);
+        }
+    }
+}
+
+.ModalInputLabel {
+    background: var(--modal-label-bg);
+    & i {
+        color: var(--modal-label-color);
+        font-size: var(--modal-label-text);
+    }
+    & span {
+        color: var(--modal-label-color);
+        font-size: var(--modal-label-text);
+        font-weight: var(--modal-label-weight);
+        text-transform: capitalize;
+    } 
+}
+
+.ModalInputError {
+    background: var(--modal-error-bg);
+    & i {
+        color: var(--modal-error-color);
+        font-size: var(--modal-error-text);
+    }
+    & span {
+        color: var(--modal-error-color);
+        font-size: var(--modal-error-text);
+        font-weight: var(--modal-error-weight);
+    } 
+}
+
+
+
+

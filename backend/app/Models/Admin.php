@@ -19,4 +19,6 @@ class Admin extends Model
     protected $casts = [
         'remember_token' => 'hashed',
     ];
+
+    
 }

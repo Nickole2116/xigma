@@ -344,3 +344,100 @@
         height: auto;
     }
 }
+
+:root[data-theme="theme1"][data-mode="day-mode"] {
+    --modal-button-bg: radial-gradient(ellipse at bottom,#45a5ff,#0348f2 70%);
+    --modal-button-text: .75rem;
+    --modal-button-color: #eafbfc;
+    --modal-button-weight: 500;
+    --modal-button-border: none;
+    --modal-button-boxshadow: none;
+    --modal-btnhover-bg: radial-gradient(ellipse at bottom,#45a5ff,#0348f2 70%);
+    --modal-btnhover-text: .75rem;
+    --modal-btnhover-color: #eafbfc;
+    --modal-btnhover-border: none;
+    --modal-btnhover-boxshadow: none;
+}
+:root[data-theme="theme1"][data-mode="night-mode"] {
+    --modal-button-bg: #242a3a;
+    --modal-button-text: .75rem;
+    --modal-button-color: #e2feff;
+    --modal-button-weight: 500;
+    --modal-button-border: none;
+    --modal-button-boxshadow: none;
+    --modal-btnhover-bg: radial-gradient(ellipse at bottom,#45daff,#0348f2 70%);
+    --modal-btnhover-text: .75rem;
+    --modal-btnhover-color: #eafbfc;
+    --modal-btnhover-border: none;
+    --modal-btnhover-boxshadow: none;
+}
+/* Modal */
+.wrapper {
+    display: inline;
+    position: relative;
+    & .tooltip {
+        position: absolute;
+        top: -1.5rem;
+        border-radius: 3px;
+        background: #131e38;
+        font-size: .75rem;
+        white-space: nowrap;
+        padding: .15rem;
+        display: none;
+
+        &.show {
+            display: block;
+        }
+    }
+}
+.ModalButton {
+    cursor: pointer;
+    border: var(--modal-button-border);
+    outline: none;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    font-size: var(--modal-button-text);
+    font-weight: var(--modal-button-weight);
+    color: var(--modal-button-color);
+    background: var(--modal-button-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    box-shadow: var(--modal-button-boxshadow);
+
+    &:hover {
+        background: var(--modal-btnhover-bg);
+        font-size: var(--modal-btnhover-text);
+        color: var(--modal-btnhover-color);
+        border: var(--modal-btnhover-border);
+        box-shadow: var(--modal-btnhover-boxshadow);
+    }
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+    &.pending {
+        pointer-events: none;
+    }
+
+    & .loader {
+        width: 16px;
+        height: 16px;
+        border: 2px solid #fff;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    & > img {
+        width: var(--modal-button-text);
+        height: auto;
+    }
+
+    @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+    }
+}

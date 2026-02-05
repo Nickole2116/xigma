@@ -5,6 +5,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Log;
 use Str;
+use DB;
+
+use App\Models\AdminLogin;
+use App\Models\Order;
+use App\Models\OrderLog;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+
 
 class OrderController extends Controller {
 
@@ -27,6 +35,7 @@ class OrderController extends Controller {
         DB::beginTransaction();
         try {
             $attachment = null;
+            $ref_ticket = Str::random(6);
 
             if($request->hasFile('attachment')){
                 $path = Storage::disk('s3')->put('orders', $request->file('attachment'));
@@ -37,41 +46,43 @@ class OrderController extends Controller {
             $order = Order::create([
                 'comments' => $request->comments,
                 'attachment_url' => $attachment,
-                'user_id' => $request->user_id,
-                'admin_id' => $request->admin_id,
-                'ref_ticket' => $request->ref_ticket,
+                'user_id' => $request->user_id ?? null,
+                'admin_id' => $request->admin_id ?? null,
+                'ref_ticket' => $ref_ticket,
                 'status' => 1,
                 'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
                 'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
             ]);
 
             if($order) {
-                OrderLog::create([
+                $order_log = OrderLog::create([
                     'order_id' => $order->id,
                     'action' => 'CREATE_ORDER',
                     'payload' => json_encode([
                         'comments' => $request->comments,
-                        'attachment_url' => $attachment,
-                        'user_id' => $request->user_id,
-                        'admin_id' => $request->admin_id,
-                        'ref_ticket' => $request->ref_ticket
+                        'attachment_url' => $attachment ?? null,
+                        'user_id' => $request->user_id ?? null,
+                        'admin_id' => $request->admin_id ?? null,
+                        'ref_ticket' => $ref_ticket,
                     ]),
                     'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
                     'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
                 ]);
             }
+
+            DB::commit();
+
+            return response()->json([
+                'message' => 'Order created successfully',
+                'order' => $order,
+                'order_log' => $order_log,
+            ]);
             
         } catch (\Throwable $e) {
             DB::rollBack();
             return response()->json([
                 'error' => $e->getMessage(),
             ], 500);
-        }
-        finally {
-            DB::commit();
-            return response()->json([
-                'message' => 'Order created successfully',
-            ]);
         }
     }
 }

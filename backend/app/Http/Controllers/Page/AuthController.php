@@ -148,7 +148,7 @@ class AuthController extends Controller
 
     public function verifyToken(Request $request) {
         $current_token = $request->token;
-        $current_token_info = AdminLogin::where('token', $current_token)->latest()->first();
+        $current_token_info = AdminLogin::with('admin')->where('token', $current_token)->latest()->first();
 
         if(!$current_token_info){
             return response()->json(['status' => 401, 'message' => 'Token not found'], 401);
@@ -159,7 +159,11 @@ class AuthController extends Controller
             } else if ($current_token_info->created_at->diffInHours(now()) >= 1){
                 return response()->json(['status' => 403, 'message' => 'Token expired'], 401);
             } else {
-                return response()->json(['status' => 200, 'message' => 'Token verified'], 200);
+                return response()->json([
+                    'status' => 200, 
+                    'message' => 'Token verified',
+                    'admin' => $current_token_info->admin
+                ], 200);
             }
         }
         return response()->json(['status' => 401, 'message' => 'Token not found'], 401);

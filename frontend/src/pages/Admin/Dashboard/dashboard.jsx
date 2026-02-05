@@ -5,6 +5,10 @@ import { ThirdButton, SubmitButton, CancelButton, MoreButton, DownloadButton, Th
 import { getTelegramProfile, getTelegramUpdates, loginTelegramClient } from "@/services/modules/telegramclient.service";
 import SmallCalender from '@/pages/Admin/Components/Calender/SmallCalender';
 import CreateOrderContent from './Compoenent/CreateOrderContent';
+import { getOrderListing, verifyToken } from "@/services/modules/admin.service";
+import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
+
 
 const Dashboard = () => {
     const { theme, setTheme,
@@ -29,6 +33,9 @@ const Dashboard = () => {
         isPageLoading, setIsPageLoading
     } = useGlobalStore();
     const [createOrderModal, setCreateOrderModal] = useState(false);
+    const [user, setUser] = useState(null);
+    const [orderListings, setOrderListings] = useState([]);
+    const navigate = useNavigate();
 
     const loadMessages = async () => {
       const data = await loginTelegramClient()
@@ -54,6 +61,7 @@ const Dashboard = () => {
               month: pad2(date.getMonth() + 1), // JS month is 0-based
               day,
               daySuffix: getDaySuffix(day),
+              weekday: getWeekday(date.getDay()),
               hour: pad2(date.getHours()),
               minutes: String(date.getMinutes()).padStart(2, "0"),
               seconds: String(date.getSeconds()).padStart(2, "0"),
@@ -71,6 +79,33 @@ const Dashboard = () => {
             default: return 'th';
         }
     }
+    const getWeekday = (day) => {
+        const weekdays = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
+        return weekdays[day];
+    }
+
+    const verifyPageToken = async () => {
+        const res = await verifyToken({ token: localStorage.getItem('ACCESS_TOKEN') });
+        if (res.status === 200) {
+            console.log(res);
+          setUser(res.admin);
+          console.log(user);
+        } else {
+          console.log(res);
+          toast.error(res.message);
+        }
+    };
+
+    const getOrderListings = async () => {
+        const res = await getOrderListing();
+        if (res.status === 200) {
+            console.log(res);
+            setOrderListings(res.orders);
+        } else {
+            console.log(res);
+            toast.error(res.message);
+        }
+    }
 
     useEffect(() => {
         setTopNav(true);
@@ -79,6 +114,8 @@ const Dashboard = () => {
         // loadMessages();
 
         refreshNowTime();
+        verifyPageToken();
+        getOrderListings();
     }, [])
 
     return <>
@@ -88,14 +125,14 @@ const Dashboard = () => {
                 <div className="date">
                     <h2>{time.day}<b>{getDaySuffix(time.day)}</b></h2>
                     <div className="info">
-                        <h5>Mon.</h5>
+                        <h5>{time.weekday}</h5>
                         <span>January</span>
                     </div>
                 </div>
 
                 <div className="welcome">
                     <div className="time">{time.hour}<b>:</b>{time.minutes}</div>
-                    <div className="main">Welcome Back, Tan Nickole</div>
+                    <div className="main">Welcome Back, {user?.name}</div>
                 </div>
 
                 <div className="search">
@@ -118,7 +155,32 @@ const Dashboard = () => {
                     
 
                     <div class="listing">
-                        <div className="each-list">
+                        {orderListings.map((order) => (
+                            <div className="each-list" key={order.id}>
+                                <div className="info">
+                                    <div className="thumbnail">
+                                        <img src="https://picsum.photos/200/300" alt="profile" />
+                                        <span>{order.admin?.name} <b>({order.admin?.phone})</b></span>
+                                    </div>
+                                    <div class="comment">
+                                        {order.comments}
+                                    </div>
+                                    <div class="ticketno">
+                                        <div class="highlight">#</div>
+                                        <span>{order.ref_ticket}</span>
+                                    </div>
+                                    <div class="footer">
+                                        <span className="date">{moment(order.created_at).format('DD MMM YYYY | HH:mm')}</span>
+                                        <div className="action">
+                                            <SubmitButton>Create Project</SubmitButton>
+                                            <CancelButton>Delete</CancelButton>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        ))}
+                        {/*<div className="each-list">
                             <div className="info">
                                 <div className="thumbnail">
                                     <img src="https://picsum.photos/200/300" alt="profile" />
@@ -140,55 +202,7 @@ const Dashboard = () => {
                                 </div>
                                 
                             </div>
-                        </div>
-
-                        <div className="each-list">
-                            <div className="info">
-                                <div className="thumbnail">
-                                    <img src="https://picsum.photos/200/300" alt="profile" />
-                                    <span>Allan Ng <b>(017***7827)</b></span>
-                                </div>
-                                <div class="comment">
-                                    Hi, I want can direct login der login page API
-                                </div>
-                                <div class="ticketno">
-                                    <div class="highlight">#</div>
-                                    <span>176375</span>
-                                </div>
-                                <div class="footer">
-                                    <span className="date">25 Jan 2025 | 20:37</span>
-                                    <div className="action">
-                                        <SubmitButton>Create Project</SubmitButton>
-                                        <CancelButton>Delete</CancelButton>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-
-                        <div className="each-list">
-                            <div className="info">
-                                <div className="thumbnail">
-                                    <img src="https://picsum.photos/200/300" alt="profile" />
-                                    <span>Allan Ng <b>(017***7827)</b></span>
-                                </div>
-                                <div class="comment">
-                                    Hi, I want can direct login der login page API
-                                </div>
-                                <div class="ticketno">
-                                    <div class="highlight">#</div>
-                                    <span>176375</span>
-                                </div>
-                                <div class="footer">
-                                    <span className="date">25 Jan 2025 | 20:37</span>
-                                    <div className="action">
-                                        <SubmitButton>Create Project</SubmitButton>
-                                        <CancelButton>Delete</CancelButton>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
+                        </div>*/}
                     </div>
                 </div>
                 <div className="coming-request">

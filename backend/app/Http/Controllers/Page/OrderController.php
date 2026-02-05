@@ -85,4 +85,13 @@ class OrderController extends Controller {
             ], 500);
         }
     }
+
+    public function getOrderInit(Request $request) {
+        $orders = Order::with('admin', 'user')->get();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Order listing fetched successfully',
+            'orders' => $orders,
+        ]);
+    }
 }

@@ -17,3 +17,6 @@ export const gets = (params) => {
 export const createOrder = (payload) => {
   return api.post('/admin/create_order', payload)
 }
+export const getOrderListing = () => {
+  return api.get('/admin/get_order_init');
+}

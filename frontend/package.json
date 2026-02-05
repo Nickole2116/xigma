@@ -14,10 +14,12 @@
     "@tanstack/react-query": "^5.90.17",
     "axios": "^1.13.2",
     "i18next": "^25.7.4",
+    "moment": "^2.30.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.71.1",
     "react-i18next": "^16.5.3",
+    "react-moment": "^1.2.1",
     "react-router-dom": "^6.30.3",
     "sass": "^1.97.2",
     "zod": "^4.3.5"

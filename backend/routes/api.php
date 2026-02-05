@@ -27,7 +27,7 @@ Route::get('/users', [AuthController::class, 'index']);
 Route::post('/admin/login_as_form', [AuthController::class, 'adminLogin'])->name('admin_login');
 Route::post('/admin/verify_token', [AuthController::class, 'verifyToken'])->name('verify_token');
 Route::post('/admin/create_order', [OrderController::class, 'createOrder'])->name('create_order');
-
+Route::get('/admin/get_order_init', [OrderController::class, 'getOrderInit'])->name('get_order_init');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', fn (Request $request) => $request->user());

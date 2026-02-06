@@ -105,9 +105,19 @@ class OrderController extends Controller {
         // start 
         DB::beginTransaction();
         try {
+            $attachmenturl = null;
+
+            if($request->hasFile('attachment')){
+                $file = $request->file('attachment');
+                $path = Storage::disk('s3')->put('orders', $file);
+                $attachmenturl  = Storage::disk('s3')->url($path);
+                $attachmentfileformat = $file->getMimeType();
+            }
             $order = Order::where('ref_ticket', $request->order_ref)->latest()->first();
             $project = Project::create([
                 'status' => 1,
+                'attachment' => (string) $attachmenturl,
+                'attachment_fileformat' => (string) $attachmentfileformat,
                 'projects_name' => $request->project_name,
                 'category_id' => $request->category_id ?? 1,
                 'admin_id' => $request->admin_id ?? $order->admin_id, 
@@ -147,7 +157,7 @@ class OrderController extends Controller {
     }
 
     public function getProjectInit(Request $request) {
-        $project = Project::with('admin', 'user')->get();
+        $project = Project::with('admin', 'user', 'category')->get();
         return response()->json([
             'status' => 200,
             'message' => 'Product listing fetched successfully',
@@ -156,7 +166,7 @@ class OrderController extends Controller {
     }
 
     public function getAllCategories(Request $request) {
-        $cat = Category::where('status', 1)->get();
+        $cat = Category::with('products')->where('status', 1)->get();
         return response()->json([
             'status' => 200,
             'message' => 'Category listing fetched successfully',

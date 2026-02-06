@@ -9,7 +9,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['status', 'projects_name', 'order_id', 'category_id', 'admin_id', 'user_id'];
+    protected $fillable = ['status', 'projects_name', 'attachment', 'attachment_fileformat', 'order_id', 'category_id', 'admin_id', 'user_id'];
 
 
     protected $casts = [
@@ -24,6 +24,11 @@ class Project extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
     public function items()

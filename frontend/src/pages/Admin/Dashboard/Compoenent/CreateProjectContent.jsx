@@ -41,22 +41,33 @@ export const CreateProjectContent = ({ order, setCurrentOrder }) => {
     }, []);
 
   
-  const onSubmit = async (formData) => {
-    try {
-      formData.admin_id = user?.id;
-      formData.order_ref = order?.ref_ticket;
-      const res = await createProject(formData);
-
-      console.log(formData);
-      console.log(res);
-      
-    } catch (err) {
-      console.error("login failed:", err);
-    }
-  };
+    const onSubmit = async (data) => {
+      console.log(data);
+      try {
+        const formData = new FormData();
+    
+        formData.append('project_name', data.project_name);
+        formData.append('admin_id', user?.id);
+        formData.append('order_ref', order?.ref_ticket);
+    
+        if (data.attachment && data.attachment.length > 0) {
+          formData.append('attachment', data.attachment[0]);
+        }
+    
+        const res = await createProject(formData);
+        console.log(res);
+      } catch (err) {
+        console.error("create project failed:", err);
+      }
+    };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="modal-form">
+      <input
+        type="file"
+        accept="image/*"
+        {...register('attachment')}
+      />
       <ModalInput
         type="text"
         InternalLabel={t("project_name")}

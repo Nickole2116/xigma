@@ -1,5 +1,6 @@
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
 import { use, useEffect, useState } from 'react';
+import { getProjects, getCategories, verifyToken } from "@/services/modules/admin.service";
 
 // import content
 import LeftNav from "./Component/LeftNav";
@@ -31,6 +32,19 @@ const Project = () => {
     } = useGlobalStore();
 
     const [mode, setMode] = useState('mansory');
+    const [projects, setProjects] = useState([]);
+
+
+    const getProjectListings = async () => {
+        const res = await getProjects();
+        if (res.status === 200) {
+            console.log(res);
+            setProjects(res.project);
+        } else {
+            //error
+        }
+    }
+
 
     useEffect(() => {
         setTopNav(true);
@@ -38,6 +52,7 @@ const Project = () => {
         setLeftNavCon(<LeftNav/>);
         setTopSubNav(true);
         setTopSubNavCon(<TopSubNav mode={mode} setMode={setMode}/>);
+        getProjectListings();
 
     }, [mode])
 
@@ -45,10 +60,10 @@ const Project = () => {
         {/**  */}
         {/** Mansory Layout */}
         {mode == 'mansory' && <>
-            <MansoryLayout />
+            <MansoryLayout projects={projects}/>
         </>}
         {mode == 'row' && <>
-            <RowLayout />
+            <RowLayout projects={projects}/>
         </>}
         
 

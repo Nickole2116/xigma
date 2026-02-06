@@ -1,11 +1,11 @@
 import mod from './__index.module.scss';
 
-const ProductGridCard = () => {
+const ProductGridCard = ({ project }) => {
 
     return <>
         <div className={mod.card}>
             <div className={mod.head}>
-                <span>Project Name I</span>
+                <span>{project.projects_name}</span>
                 <div className={mod.actions}>
                     <button className={mod.more}>
                         <i className="mdi mdi-dots-horizontal"></i>
@@ -14,7 +14,9 @@ const ProductGridCard = () => {
             </div>
             <div className={mod.body}>
                 <div className={mod.thumbnail}>
-                    <img src="https://picsum.photos/200" alt="thumbnail" />
+                    <img src={project.attachment ?? `https://picsum.photos/200`} alt="thumbnail" />
+                    
+                    
                 </div>
             </div>
             <div className={mod.footer}>

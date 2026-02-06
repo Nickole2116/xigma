@@ -29,6 +29,8 @@ Route::post('/admin/verify_token', [AuthController::class, 'verifyToken'])->name
 Route::post('/admin/create_order', [OrderController::class, 'createOrder'])->name('create_order');
 Route::get('/admin/get_order_init', [OrderController::class, 'getOrderInit'])->name('get_order_init');
 Route::post('/admin/create_project', [OrderController::class, 'createProject'])->name('create_project');
+Route::get('/admin/get_projects_init', [OrderController::class, 'getProjectInit'])->name('get_project_init');
+Route::get('/admin/get_all_categories', [OrderController::class, 'getAllCategories'])->name('get_categories');
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', fn (Request $request) => $request->user());

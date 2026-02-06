@@ -1,10 +1,8 @@
 import '../index.scss';
 
-import { useState } from 'react';
 
-const LeftSubNav = () => {
+const LeftSubNav = ({ mode, setMode }) => {
 
-    const [mode, setMode] = useState('mansory');
 
 
     return <>

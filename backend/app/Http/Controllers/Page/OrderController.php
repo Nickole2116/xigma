@@ -145,4 +145,22 @@ class OrderController extends Controller {
             ], 500);
         }
     }
+
+    public function getProjectInit(Request $request) {
+        $project = Project::with('admin', 'user')->get();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Product listing fetched successfully',
+            'project' => $project,
+        ]);
+    }
+
+    public function getAllCategories(Request $request) {
+        $cat = Category::where('status', 1)->get();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Category listing fetched successfully',
+            'category' => $cat,
+        ]);
+    }
 }

@@ -1,10 +1,11 @@
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
-import { useEffect } from 'react';
+import { use, useEffect, useState } from 'react';
 
 // import content
 import LeftNav from "./Component/LeftNav";
 import TopSubNav from "./Component/TopSubNav";
 import MansoryLayout from "./Component/MansoryLayout";
+import RowLayout from "./Component/RowLayout";
 
 const Project = () => {
     const { theme, setTheme,
@@ -29,19 +30,27 @@ const Project = () => {
         isPageLoading, setIsPageLoading
     } = useGlobalStore();
 
+    const [mode, setMode] = useState('mansory');
+
     useEffect(() => {
         setTopNav(true);
         setLeftNav(true);
         setLeftNavCon(<LeftNav/>);
         setTopSubNav(true);
-        setTopSubNavCon(<TopSubNav/>);
+        setTopSubNavCon(<TopSubNav mode={mode} setMode={setMode}/>);
 
-    }, [])
+    }, [mode])
 
     return <>
         {/**  */}
         {/** Mansory Layout */}
-        <MansoryLayout />
+        {mode == 'mansory' && <>
+            <MansoryLayout />
+        </>}
+        {mode == 'row' && <>
+            <RowLayout />
+        </>}
+        
 
     </>;
 }

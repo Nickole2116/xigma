@@ -23,3 +23,9 @@ export const getOrderListing = () => {
 export const createProject = (payload) => {
   return api.post('/admin/create_project', payload)
 }
+export const getProjects = () => {
+  return api.get('/admin/get_projects_init');
+}
+export const getCategories = () => {
+  return api.get('/admin/get_all_categories');
+}

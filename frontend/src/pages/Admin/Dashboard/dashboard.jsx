@@ -40,10 +40,10 @@ const Dashboard = () => {
     const [currentOrder, setCurrentOrder] = useState(null);
     const navigate = useNavigate();
 
-    const loadMessages = async () => {
+    /*const loadMessages = async () => {
       const data = await loginTelegramClient()
       console.log(data)
-    }
+    }*/
 
     const [time, setTime] = useState({
         year: "",
@@ -88,15 +88,19 @@ const Dashboard = () => {
     }
 
     const verifyPageToken = async () => {
-        const res = await verifyToken({ token: localStorage.getItem('ACCESS_TOKEN') });
-        if (res.status === 200) {
-            console.log(res);
-          setUser(res.admin);
-          console.log(user);
-        } else {
-          console.log(res);
-          toast.error(res.message);
+        try{
+            const res = await verifyToken({ token: localStorage.getItem('ACCESS_TOKEN') });
+            if (res.status === 200) {
+                console.log(res);
+              setUser(res.admin);
+              console.log(user);
+            } else {
+              navigate('/admin');
+            }
+        } catch (err) {
+            navigate('/admin');
         }
+        
     };
 
     const getOrderListings = async () => {

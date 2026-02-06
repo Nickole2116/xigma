@@ -1,4 +1,5 @@
 import './login.scss';
+import { useEffect } from 'react';
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
 
 //Content
@@ -8,7 +9,31 @@ import TelegramLogin from "./content/TelegramLogin";
 
 
 export const Login = () => {
-    const { themeMode, setThemeMode, isLogined, setIsLogined } = useGlobalStore();
+    const { theme, setTheme,
+        isLogined, setIsLogined, 
+        themeMode, setThemeMode,
+        topNav, setTopNav,
+        topNavCon, setTopNavCon,
+        leftNav, setLeftNav,
+        leftNavCon, setLeftNavCon,
+        rightNav, setRightNav,
+        rightNavCon, setRightNavCon,
+        bottomNav, setBottomNav,
+        bottomNavCon, setBottomNavCon,
+        topSubNav, setTopSubNav,
+        topSubNavCon, setTopSubNavCon,
+        leftSubNav, setLeftSubNav,
+        leftSubNavCon, setLeftSubNavCon,
+        rightSubNav, setRightSubNav,
+        rightSubNavCon, setRightSubNavCon,
+        bottomSubNav, setBottomSubNav,
+        bottomSubNavCon, setBottomSubNavCon,
+        isPageLoading, setIsPageLoading
+    } = useGlobalStore();
+
+    useEffect(() => {
+        setTopNav();
+    })
 
 
     return <>

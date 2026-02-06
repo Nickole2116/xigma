@@ -5,6 +5,7 @@ import { ThirdButton, SubmitButton, CancelButton, MoreButton, DownloadButton, Th
 import { getTelegramProfile, getTelegramUpdates, loginTelegramClient } from "@/services/modules/telegramclient.service";
 import SmallCalender from '@/pages/Admin/Components/Calender/SmallCalender';
 import CreateOrderContent from './Compoenent/CreateOrderContent';
+import CreateProjectContent from './Compoenent/CreateProjectContent';
 import { getOrderListing, verifyToken } from "@/services/modules/admin.service";
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
@@ -35,6 +36,8 @@ const Dashboard = () => {
     const [createOrderModal, setCreateOrderModal] = useState(false);
     const [user, setUser] = useState(null);
     const [orderListings, setOrderListings] = useState([]);
+    const [createProjectModal, setCreateProjectModal] = useState(false);
+    const [currentOrder, setCurrentOrder] = useState(null);
     const navigate = useNavigate();
 
     const loadMessages = async () => {
@@ -107,6 +110,11 @@ const Dashboard = () => {
         }
     }
 
+    const createProject = (order) => {
+        setCreateProjectModal(true);
+        setCurrentOrder(order);
+    }
+
     useEffect(() => {
         setTopNav(true);
         setLeftNav(false);
@@ -160,7 +168,7 @@ const Dashboard = () => {
                                 <div className="info">
                                     <div className="thumbnail">
                                         <img src="https://picsum.photos/200/300" alt="profile" />
-                                        <span>{order.admin?.name} <b>({order.admin?.phone})</b></span>
+                                        <span>{order.admin?.name} <b>({order.admin?.name == user?.name ? 'You' : ''})</b></span>
                                     </div>
                                     <div class="comment">
                                         {order.comments}
@@ -172,7 +180,7 @@ const Dashboard = () => {
                                     <div class="footer">
                                         <span className="date">{moment(order.created_at).format('DD MMM YYYY | HH:mm')}</span>
                                         <div className="action">
-                                            <SubmitButton>Create Project</SubmitButton>
+                                            <SubmitButton onClick={() => createProject(order)}>Create Project</SubmitButton>
                                             <CancelButton>Delete</CancelButton>
                                         </div>
                                     </div>
@@ -445,6 +453,14 @@ const Dashboard = () => {
             title="Create New Order"
         >
             <CreateOrderContent />
+        </ThirdPopup>
+
+        <ThirdPopup
+            isOpen={createProjectModal}
+            onClose={() => setCreateProjectModal(false)}
+            title="Create New Order"
+        >
+            <CreateProjectContent order={currentOrder} setCurrentOrder={setCurrentOrder} />
         </ThirdPopup>
     </>;
 };

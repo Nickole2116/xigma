@@ -20,3 +20,6 @@ export const createOrder = (payload) => {
 export const getOrderListing = () => {
   return api.get('/admin/get_order_init');
 }
+export const createProject = (payload) => {
+  return api.post('/admin/create_project', payload)
+}

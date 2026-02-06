@@ -6,10 +6,16 @@ use Illuminate\Http\Request;
 use Log;
 use Str;
 use DB;
+use Auth;
 
+use App\Models\Admin;
 use App\Models\AdminLogin;
 use App\Models\Order;
 use App\Models\OrderLog;
+use App\Models\Project;
+use App\Models\ProjectItem;
+use App\Models\ProjectLog;
+use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
@@ -93,5 +99,50 @@ class OrderController extends Controller {
             'message' => 'Order listing fetched successfully',
             'orders' => $orders,
         ]);
+    }
+
+    public function createProject(Request $request) {
+        // start 
+        DB::beginTransaction();
+        try {
+            $order = Order::where('ref_ticket', $request->order_ref)->latest()->first();
+            $project = Project::create([
+                'status' => 1,
+                'projects_name' => $request->project_name,
+                'category_id' => $request->category_id ?? 1,
+                'admin_id' => $request->admin_id ?? $order->admin_id, 
+                'users_id' => $order->user_id ?? null,
+                'created_by' => $request->admin_id ?? $order->admin_id,
+                'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+                'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+                'order_id' => $order->id ?? null,
+            ]);
+
+            if($project) {
+                
+                $project_log = ProjectLog::create([
+                    'project_id' => $project->id,
+                    'action' => 'CREATE_PROJECT',
+                    'payload' => json_encode($project),
+                    'created_by' => $request->admin_id ?? $order->admin_id,
+                    'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+                    'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+                ]);
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Project created successfully',
+                'project' => $project,
+            ]);
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return response()->json([
+                'error' => $e->getMessage(),
+                'request' => $request->all()
+            ], 500);
+        }
     }
 }

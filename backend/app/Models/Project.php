@@ -9,6 +9,9 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['status', 'projects_name', 'order_id', 'category_id', 'admin_id', 'user_id'];
+
+
     protected $casts = [
         'isStarred' => 'integer',
     ];

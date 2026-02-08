@@ -1,5 +1,5 @@
 import '../__index.scss';
-const LeftSubNav = () => {
+const LeftNav = () => {
 
 
     return <>
@@ -28,4 +28,4 @@ const LeftSubNav = () => {
     </>;
 }
 
-export default LeftSubNav;
+export default LeftNav;

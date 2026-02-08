@@ -65,6 +65,7 @@ const Dashboard = () => {
               day,
               daySuffix: getDaySuffix(day),
               weekday: getWeekday(date.getDay()),
+              monthDay: getMonthKey(parseInt(date.getMonth())),
               hour: pad2(date.getHours()),
               minutes: String(date.getMinutes()).padStart(2, "0"),
               seconds: String(date.getSeconds()).padStart(2, "0"),
@@ -85,6 +86,10 @@ const Dashboard = () => {
     const getWeekday = (day) => {
         const weekdays = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
         return weekdays[day];
+    }
+    const getMonthKey = (k) => {
+        const monthDay = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ogos', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return monthDay[k];
     }
 
     const verifyPageToken = async () => {
@@ -138,7 +143,7 @@ const Dashboard = () => {
                     <h2>{time.day}<b>{getDaySuffix(time.day)}</b></h2>
                     <div className="info">
                         <h5>{time.weekday}</h5>
-                        <span>January</span>
+                        <span>{time.monthDay}</span>
                     </div>
                 </div>
 

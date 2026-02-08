@@ -1,25 +1,69 @@
-import mod from './__index.module.scss';
+import { useState } from "react";
+import mod from "./__index.module.scss";
 
-const ProductGridCard = ({ project }) => {
+const ProductGridCard = ({ project, onDropFile, setInfoPopupContent, setInfoPopup }) => {
+  const [isDragging, setIsDragging] = useState(false);
 
-    return <>
-        <div className={mod.card}>
-            <div className={mod.head}>
-                <span>{project.projects_name}</span>
-                <div className={mod.actions}>
-                    <button className={mod.more}>
-                        <i className="mdi mdi-dots-horizontal"></i>
-                    </button>
-                </div>
+  const handleDragOver = (e) => {
+    e.preventDefault(); // ⭐ 必须
+  };
+
+  const handleDragEnter = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+
+    const files = e.dataTransfer.files;
+    if (!files || !files.length) return;
+
+    const file = files[0]; // 只拿第一个
+    console.log("Dropped file:", file);
+
+    // 往父层丢（推荐）
+    onDropFile?.(file, project);
+  };
+
+  const handleClick = () => {
+    setInfoPopup(true);
+    setInfoPopupContent(project);    
+  }
+
+  return (
+    <div className={mod.card} onClick={handleClick}>
+      <div className={mod.head}>
+        <span>{project.projects_name}</span>
+      </div>
+
+      <div
+        className={`${mod.body} ${isDragging ? mod.dragging : ""}`}
+        onDragOver={handleDragOver}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
+        <div className={mod.thumbnail}>
+          <img
+            src={project.attachment || "https://picsum.photos/200"}
+            alt="thumbnail"
+          />
+
+          {isDragging && (
+            <div className={mod.dropOverlay}>
+              Drop file here
             </div>
-            <div className={mod.body}>
-                <div className={mod.thumbnail}>
-                    <img src={project.attachment ?? `https://picsum.photos/200`} alt="thumbnail" />
-                    
-                    
-                </div>
-            </div>
-            <div className={mod.footer}>
+          )}
+        </div>
+      </div>
+
+        <div className={mod.footer}>
                 {/** User */}
                 <div className={mod.thumbnail}>
                     <img src="https://picsum.photos/200" alt="thumbnail" />
@@ -41,9 +85,9 @@ const ProductGridCard = ({ project }) => {
                     <i className="mdi mdi-progress-clock"></i>
                     <span>On Progress</span>
                 </div>
-            </div>
         </div>
-    </>;
-}
+    </div>
+  );
+};
 
 export default ProductGridCard;

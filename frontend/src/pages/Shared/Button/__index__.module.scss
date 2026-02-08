@@ -441,3 +441,101 @@
         }
     }
 }
+
+
+/* Auth */
+:root[data-theme="theme1"][data-mode="day-mode"] {
+    --cancel-button-bg: radial-gradient(ellipse at bottom,#45a5ff,#0348f2 70%);
+    --cancel-button-text: .75rem;
+    --cancel-button-color: #eafbfc;
+    --cancel-button-weight: 500;
+    --cancel-button-border: none;
+    --cancel-button-boxshadow: none;
+    --cancel-btnhover-bg: radial-gradient(ellipse at bottom,#45a5ff,#0348f2 70%);
+    --cancel-btnhover-text: .75rem;
+    --cancel-btnhover-color: #eafbfc;
+    --cancel-btnhover-border: none;
+    --cancel-btnhover-boxshadow: none;
+}
+:root[data-theme="theme1"][data-mode="night-mode"] {
+    --cancel-button-bg: #242a3a;
+    --cancel-button-text: .75rem;
+    --cancel-button-color: #e2feff;
+    --cancel-button-weight: 500;
+    --cancel-button-border: none;
+    --cancel-button-boxshadow: none;
+    --cancel-btnhover-bg: radial-gradient(ellipse at bottom,#45daff,#0348f2 70%);
+    --cancel-btnhover-text: .75rem;
+    --cancel-btnhover-color: #eafbfc;
+    --cancel-btnhover-border: none;
+    --cancel-btnhover-boxshadow: none;
+}
+.wrapper {
+    display: inline;
+    position: relative;
+    & .tooltip {
+        position: absolute;
+        top: -1.5rem;
+        border-radius: 3px;
+        background: #131e38;
+        font-size: .75rem;
+        white-space: nowrap;
+        padding: .15rem;
+        display: none;
+
+        &.show {
+            display: block;
+        }
+    }
+}
+.CancelButton {
+    cursor: pointer;
+    border: var(--cancel-button-border);
+    outline: none;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+    font-size: var(--cancel-button-text);
+    font-weight: var(--cancel-button-weight);
+    color: var(--cancel-button-color);
+    background: var(--cancel-button-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    box-shadow: var(--cancel-button-boxshadow);
+
+    &:hover {
+        background: var(--cancel-btnhover-bg);
+        font-size: var(--cancel-btnhover-text);
+        color: var(--cancel-btnhover-color);
+        border: var(--cancel-btnhover-border);
+        box-shadow: var(--cancel-btnhover-boxshadow);
+    }
+    &.disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+    &.pending {
+        pointer-events: none;
+    }
+
+    & .loader {
+        width: 16px;
+        height: 16px;
+        border: 2px solid #fff;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+    }
+
+    & > img {
+        width: var(--cancel-button-text);
+        height: auto;
+    }
+
+    @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+    }
+}

@@ -1,7 +1,15 @@
 import '../index.scss';
 import ProductGridCard from '../../Components/ProductGridCard';
+import ProductInfoCard from '../../Components/ProductInfoCard';
+
+import { useState } from 'react';
+import { PrimaryPopup } from '@/pages/Shared';
+
 
 const MansoryLayout = ({ projects }) => {
+
+    const [infoPopup, setInfoPopup] = useState(false);
+    const [infoPopupContent, setInfoPopupContent] = useState(null);
 
 
     return <>
@@ -9,11 +17,19 @@ const MansoryLayout = ({ projects }) => {
         <div class="masonry">
             {projects.map((pro, index) => <>
                 <div class="masonry-item" key={index}>
-                    <ProductGridCard project={pro} />
+                    <ProductGridCard project={pro} setInfoPopup={setInfoPopup} setInfoPopupContent={setInfoPopupContent} />
                 </div>
             </>)}
         </div>
     </div>
+
+    <PrimaryPopup
+        isOpen={infoPopup}
+        onClose={() => setInfoPopup(false)}
+        title="Product Info"
+    >
+        <ProductInfoCard project={infoPopupContent} />
+    </PrimaryPopup>
     
     </>;
 }

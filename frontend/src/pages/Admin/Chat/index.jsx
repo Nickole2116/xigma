@@ -5,7 +5,7 @@ import { CommentInput } from '@/pages/Shared';
 
 
 // import content
-import LeftSubNav from "./Component/LeftSubNav";
+import LeftNav from "./Component/LeftNav";
 
 const Chat = () => {
     const { theme, setTheme,
@@ -32,8 +32,8 @@ const Chat = () => {
 
     useEffect(() => {
         setTopNav(true);
-        setLeftSubNav(true);
-        setLeftSubNavCon(<LeftSubNav />);
+        setLeftNav(true);
+        setLeftNavCon(<LeftNav />);
     }, []);
 
 

@@ -40,12 +40,6 @@ export const TopNav = ({children}) => {
                         <div className="line"></div>
                     </Link>
 
-                    <Link className={`nav-item ${location.pathname === `/admin/finance` ? `bolded` : ``}`} to="/admin/finance">
-                        
-                        <span>{t('finance')}</span>
-                        <div className="line"></div>
-                    </Link>
-
                     <Link className={`nav-item ${location.pathname === `/admin/theme` ? `bolded` : ``}`} to="/admin/theme">
                         
                         <span>{t('theme')}</span>

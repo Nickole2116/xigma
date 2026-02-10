@@ -226,6 +226,7 @@
         background: #ffffff33;
         padding: .275rem .5rem;
         border-radius: 5px;
+        z-index: 10;
         & > .innerPopupContent {
             display: flex;
             align-items: center;
@@ -256,9 +257,20 @@
             }
             & .btn_starring {
                 color: rgb(255, 174, 0);
-                & > i {font-size: 1rem;}
+                & > i {font-size: 1rem; animation: starrotate-animation 1.5s infinite;display: block;}
                 &:hover {
                     color: rgb(255, 225, 0);
+                }
+                @keyframes starrotate-animation {
+                    0% {
+                        transform: rotate(0);
+                    }
+                    20% {
+                        transform: rotate(-10deg);
+                    }
+                    100% {
+                        transform: rotate(160deg);
+                    }
                 }
             }
             & .btn_share {

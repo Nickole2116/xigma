@@ -1,8 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import mod from "./__index.module.scss";
 import { useTranslation } from "react-i18next";
 import { TooltipPopup } from '@/pages/Shared';
 import InnerPopupContent from './Components/InnerPopupContent';
+import { createProjectItem, verifyToken } from "@/services/modules/admin.service";
+
 
 
 const ProductGridCard = ({ project, onDropFile, setInfoPopupContent, setInfoPopup }) => {
@@ -10,6 +12,7 @@ const ProductGridCard = ({ project, onDropFile, setInfoPopupContent, setInfoPopu
   const [isDragging, setIsDragging] = useState(false);
   const [innerPopup, setInnerPopup] = useState(false);
   const [innerPopupCon, setInnerPopupCon] = useState(null);
+  const [user, setUser] = useState(null);
   const dragCounter = useRef(0);
   const { t } = useTranslation();
 
@@ -30,29 +33,57 @@ const ProductGridCard = ({ project, onDropFile, setInfoPopupContent, setInfoPopu
     }
   };
 
-  const handleDrop = (e) => {
+  const handleDrop = async (e) => {
     e.preventDefault();
     dragCounter.current = 0;
     setIsDragging(false);
 
-    const files = e.dataTransfer.files;
-    if (!files || !files.length) return;
+    const droppedFiles = Array.from(e.dataTransfer.files);
+    if (!droppedFiles.length) return;
 
-    const file = files[0];
-    onDropFile?.(file, project);
+    console.log("Dropped files:", droppedFiles);
+
+    // upload project item
+    const formData = new FormData();
+    formData.append('admin_id', user?.id);
+    formData.append('project_id', project?.id)
+
+    droppedFiles.forEach(file => {
+      formData.append('attachments[]', file);
+    });
+
+    const res = await createProjectItem(formData);
+    console.log(res);
+
+    // optional：如果你还要同步到 state / UI
+    onDropFile?.(droppedFiles, project);
+
+  };
+
+  const verifyPageToken = async () => {
+    const res = await verifyToken({ token: localStorage.getItem('ACCESS_TOKEN') });
+    if (res.status === 200) {
+      setUser(res.admin);
+    } else {
+      navigate('/admin');
+    }
   };
 
   const handleClick = () => {
     setInfoPopup(true);
-    setInfoPopupContent(project);
+    setInfoPopupContent(project?.id);
   };
 
   const handleInnerClick = (e) => {
     e.stopPropagation();
     setInnerPopup(!innerPopup);
-    setInnerPopupCon(<InnerPopupContent />);
+    setInnerPopupCon(<InnerPopupContent onClosePopup={()=>setInnerPopup(false)} />);
     
   }
+
+  useEffect(() => {
+    verifyPageToken();
+  }, [])
 
   return (
     <div 
@@ -118,7 +149,7 @@ const ProductGridCard = ({ project, onDropFile, setInfoPopupContent, setInfoPopu
         </div>
         <div className={mod.itemcount}>
           <i className="mdi mdi-package-variant-closed"></i>
-          <span className="count">0</span>
+          <span className="count">{project.items.length}</span>
         </div>
                 
 

@@ -9,7 +9,7 @@ class ProjectItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['project_id'];
+    protected $fillable = ['path', 'item_name', 'project_id', 'isPin', 'created_by', 'path_fileformat'];
 
     public function project()
     {

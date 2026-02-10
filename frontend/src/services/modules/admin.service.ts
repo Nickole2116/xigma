@@ -29,3 +29,6 @@ export const getProjects = () => {
 export const getCategories = () => {
   return api.get('/admin/get_all_categories');
 }
+export const createProjectItem = (payload) => {
+  return api.post('/admin/create_project_item', payload)
+}

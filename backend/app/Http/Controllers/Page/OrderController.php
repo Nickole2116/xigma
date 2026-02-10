@@ -157,7 +157,7 @@ class OrderController extends Controller {
     }
 
     public function getProjectInit(Request $request) {
-        $project = Project::with('admin', 'user', 'category')->get();
+        $project = Project::with('admin', 'user', 'category', 'items')->get();
         return response()->json([
             'status' => 200,
             'message' => 'Product listing fetched successfully',
@@ -172,5 +172,67 @@ class OrderController extends Controller {
             'message' => 'Category listing fetched successfully',
             'category' => $cat,
         ]);
+    }
+
+    public function createProjectItem(Request $request) {
+        // start 
+        DB::beginTransaction();
+        try {
+
+            if (!$request->hasFile('attachments')) {
+                return response()->json([
+                    'status' => 422,
+                    'message' => 'No attachments uploaded'
+                ], 422);
+            }
+
+            $projects = [];
+
+            foreach ($request->file('attachments') as $file) {
+                // insert to S3
+                $path = Storage::disk('s3')->put('project_items', $file);
+                $attachmenturl  = Storage::disk('s3')->url($path);
+                $attachmentfileformat = $file->getMimeType();
+                $originalName = $file->getClientOriginalName();
+
+                $projectitem = ProjectItem::create([
+                    'path' => (string) $attachmenturl,
+                    'path_fileformat' => (string) $attachmentfileformat,
+                    'item_name' => $originalName,
+                    'project_id' => $request->project_id ?? null,
+                    'isPin' => 0,
+                    'created_by' => $request->admin_id ?? $order->admin_id,
+                    'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+                    'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur')
+                ]);
+
+                if($projectitem) {
+                    $project_log = ProjectLog::create([
+                        'project_id' => $projectitem->project_id,
+                        'action' => 'CREATE_PROJECT_ITEM',
+                        'payload' => json_encode($projectitem),
+                        'created_by' => $request->admin_id ?? $order->admin_id,
+                        'created_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+                        'updated_at' => Carbon::now()->setTimezone('Asia/Kuala_Lumpur'),
+                    ]);
+                }
+
+                $projects[] = $projectitem;
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Project item created successfully',
+                'project' => $projectitem,
+            ]);
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            return response()->json([
+                'error' => $e->getMessage(),
+                'request' => $request->all()
+            ], 500);
+        }
     }
 }

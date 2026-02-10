@@ -31,6 +31,8 @@ Route::get('/admin/get_order_init', [OrderController::class, 'getOrderInit'])->n
 Route::post('/admin/create_project', [OrderController::class, 'createProject'])->name('create_project');
 Route::get('/admin/get_projects_init', [OrderController::class, 'getProjectInit'])->name('get_project_init');
 Route::get('/admin/get_all_categories', [OrderController::class, 'getAllCategories'])->name('get_categories');
+Route::post('/admin/create_project_item', [OrderController::class, 'createProjectItem'])->name('create_project_item');
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', fn (Request $request) => $request->user());

@@ -19,3 +19,16 @@
 @mixin justify-end {
   justify-content: end;
 }
+
+@mixin pulseAnimate($c1, $c2) {
+  animation: pulse-animation 1.5s infinite;
+  @keyframes pulse-animation {
+      0% {
+          box-shadow: 0 0 0 0px $c1;
+      }
+      100% {
+          box-shadow: 0 0 0 7px $c2;
+      }
+  }
+
+} 

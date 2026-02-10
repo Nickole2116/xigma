@@ -33,6 +33,7 @@ export { default as AuthPopup } from './Popup/AuthPopup';
 export { default as PrimaryPopup } from './Popup/PrimaryPopup';
 export { default as SecondaryPopup } from './Popup/SecondaryPopup';
 export { default as ThirdPopup } from './Popup/ThirdPopup';
+export { default as TooltipPopup } from './Popup/TooltipPopup';
 
 /** Select */
 export { default as AuthSelect } from './Select/AuthSelect';

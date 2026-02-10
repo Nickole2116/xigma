@@ -1,9 +1,9 @@
 /* Left Sub Nav */
-.left-nav-content {
+.left-nav-content-project {
     padding: 0.5rem 1vw .5rem 2.5rem;
 
         & > .sub-nav-header {
-            padding: .5rem;
+            padding: .5rem 0;
             display: flex;
             align-items: center;
             gap: .675rem;
@@ -17,49 +17,85 @@
                 font-weight: 600;
             }
         }
-        & > .sub-nav-item {
-            padding: .65rem .5rem;
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-            cursor: pointer;
-
-            & .img-icon {
-                width: 25px;
-                height: 25px;
-            }
-
-            & span {
-                color: #fff;
-                font-size: .875rem;
-                font-weight: 500;
-            }
-
-            & > .marked {
+        & > .sub-nav-sect {
+            max-height: 35vh;
+            overflow: auto;
+            margin: 0 -.5rem;
+            & > .sub-nav-item {
+                padding: .65rem .5rem;
                 display: flex;
                 align-items: center;
                 gap: .5rem;
-                margin-left: auto;
-                & > .new-dot {
-                    width: 10px;
-                    height: 10px;
-                    background: red;
-                    border-radius: 50%;
+                cursor: pointer;
+    
+                & .img-icon {
+                    width: 25px;
+                    height: 25px;
                 }
     
-                & > i {
-                    color: rgb(255, 174, 0);
+                & span {
+                    color: #ffffffd7;
+                    font-size: .8rem;
+                    font-weight: 400;
+                    text-transform: capitalize;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    max-width: 100%;
+                }
+    
+                & > .marked {
+                    display: flex;
+                    align-items: center;
+                    gap: .875rem;
+                    margin-left: auto;
+                    & > .new-dot {
+                        width: 6px;
+                        height: 6px;
+                        background: red;
+                        border-radius: 50%;
+                        animation: pulseError-animation 1.5s infinite;
+                        
+                    }
+        
+                    & > i {
+                        font-size: .813rem;
+                        color: rgb(255, 174, 0);
+                        animation: starrotate-animation 1.5s infinite;
+
+                    }
+
+                    @keyframes pulseError-animation {
+                        0% {
+                            box-shadow: 0 0 0 0px red;
+                        }
+                        100% {
+                            box-shadow: 0 0 0 7px rgba(255, 0, 0, 0.126);
+                        }
+                    }
+                    @keyframes starrotate-animation {
+                        0% {
+                            transform: rotate(0);
+                        }
+                        20% {
+                            transform: rotate(-10deg);
+                        }
+                        100% {
+                            transform: rotate(160deg);
+                        }
+                    }
+                }
+    
+                
+    
+    
+                & > .bolded, &:hover {
+                    background: var(--text-sub-secondary);
+                    border-radius: 8px;
                 }
             }
-
-            
-
-
-            & > .bolded, &:hover {
-                background: var(--text-sub-secondary);
-                border-radius: 8px;
-            }
         }
+        
         & > .separator {
             height: 1px;
             width: 100%;
@@ -71,20 +107,21 @@
     
 }
 
+
 /* Top Sub Nav */
 .top-sub-nav-content {
     display: flex;
-    align-items: start;
+    align-items: center;
     width: 100%;
     background: var(--bg);
-    padding-top: 1.125rem;
-    padding-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: .375rem;
     & > .left { 
         flex: 1; display: flex; align-items: center; gap: .5rem; justify-content: start; 
         padding-left: 1rem;
 
         & span {
-            font-size: 1rem;
+            font-size: 1.125rem;
             font-weight: 500;
             color: var(--text-sub-secondary);
 
@@ -101,30 +138,40 @@
 }
 .btn-layout {
     border: none;
-    background: transparent;
+    background: #ffffff24;
     display: flex;
     align-items: center;
-    gap: .375rem;
+    justify-content: center;
+    gap: .5rem;
     cursor: pointer;
+    padding: .25rem .75rem .25rem .25rem;
+    border-radius: 30px;
     & > i {
-        font-size: .813rem;
+        font-size: .75rem;
         color: var(--text-sub-secondary);
+        background: #ffffffb0;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
 
     }
     & > span {
-        font-size: .75rem;
+        font-size: .65rem;
         font-weight: 500;
         color: var(--text-sub-secondary);
     }
 
     &:hover, &.bolded {
         & > i {
-            font-size: .813rem;
-            color: var(--text);
+            font-size: .75rem;
+            background: var(--highlight);
     
         }
         & > span {
-            font-size: .75rem;
+            font-size: .65rem;
             font-weight: 500;
             color: var(--text);
         }
@@ -137,7 +184,7 @@
     column-count: 4;
     column-gap: 1rem;
 
-    padding: .5rem 1rem;
+    padding: .5rem 3rem .5rem 1rem;
     max-height: 100%;
     overflow: auto;
 

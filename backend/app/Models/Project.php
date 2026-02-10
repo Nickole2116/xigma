@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Project extends Model
 {
@@ -15,6 +16,7 @@ class Project extends Model
     protected $casts = [
         'isStarred' => 'integer',
     ];
+    protected $appends = ['isNew'];
 
     public function admin()
     {
@@ -39,5 +41,15 @@ class Project extends Model
     public function scopeStarred($query)
     {
         return $query->where('isStarred', 1);
+    }
+    public function getIsNewAttribute()
+    {
+        if (!$this->created_at) {
+            return 0;
+        }
+
+        return $this->created_at->greaterThanOrEqualTo(
+            Carbon::now()->subDays(5)
+        ) ? 1 : 0;
     }
 }

@@ -1,4 +1,7 @@
+import { useTranslation } from "react-i18next"
+
 const TopSubNav = ({ layout , setLayout }) => {
+    const { t } = useTranslation();
 
     return <>
         <section className="top-sub-nav-content">
@@ -7,12 +10,12 @@ const TopSubNav = ({ layout , setLayout }) => {
             </div>
             <div className="right">
                 <button className={`btn-layout ${layout == `mansory` ? `bolded` : null}`} onClick={() => { setLayout('mansory') }}>
-                    <i className='mdi mdi-grid'></i>
-                    <span>Mansory</span>
+                    <i className='mdi mdi-periodic-table'></i>
+                    <span>{t('masonry')}</span>
                 </button>
                 <button className={`btn-layout ${layout == `row` ? `bolded` : null}`} onClick={() => { setLayout('row') }}>
                     <i className='mdi mdi-land-rows-horizontal'></i>
-                    <span>Row</span>
+                    <span>{t('listrow')}</span>
                 </button>
 
                 

@@ -10,6 +10,10 @@
 
     "user_code": "登录代号",
     "access_key": "连接匙",
-    "proceed_login": "继续至登录"
+    "proceed_login": "继续至登录",
+    "type": "分类",
+    "masonry": "瀑布模式",
+    "listrow": "条状模式",
+    "drop_here": "拖拽至此处"
 }
   

@@ -1,7 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import '../index.scss';
 
 
 const LeftSubNav = ({ mode, setMode }) => {
+
+    const { t } = useTranslation();
 
 
 
@@ -12,12 +15,12 @@ const LeftSubNav = ({ mode, setMode }) => {
             </div>
             <div className="right">
                 <button className={`btn-layout ${mode == `mansory` ? `bolded` : null}`} onClick={() => { setMode('mansory') }}>
-                    <i className='mdi mdi-grid'></i>
-                    <span>Mansory</span>
+                    <i className='mdi mdi-periodic-table'></i>
+                    <span>{t('masonry')}</span>
                 </button>
                 <button className={`btn-layout ${mode == `row` ? `bolded` : null}`} onClick={() => { setMode('row') }}>
-                    <i className='mdi mdi-land-rows-horizontal'></i>
-                    <span>Row</span>
+                    <i className='mdi mdi-dns-outline'></i>
+                    <span>{t('listrow')}</span>
                 </button>
 
                 

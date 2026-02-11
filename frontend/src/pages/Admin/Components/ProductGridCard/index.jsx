@@ -71,7 +71,7 @@ const ProductGridCard = ({ project, onDropFile, setInfoPopupContent, setInfoPopu
 
   const handleClick = () => {
     setInfoPopup(true);
-    setInfoPopupContent(project?.id);
+    setInfoPopupContent(project);
   };
 
   const handleInnerClick = (e) => {

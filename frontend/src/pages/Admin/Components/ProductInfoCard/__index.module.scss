@@ -1,8 +1,9 @@
 .card {
     display: flex;
+    width: 40vw;
     & .view {
         display: flex;
-        gap: .5rem;
+        gap: 1rem;
         width: 55%;
         height: 70vh;
         position: relative;
@@ -10,10 +11,28 @@
         & .subviewnav {
             display: flex;
             flex-direction: column;
-            gap: .5rem;
+            gap: .75rem;
+            overflow: auto;
+            min-width: 50px;
             & .navbox {
                 width: 50px;
-                & img { width: 100%;}
+                min-height: 50px;
+                border-radius: 5px;
+                background: #404040;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+                opacity: .75;
+                cursor: pointer;
+                & img { width: 100%; height: auto; position: absolute; }
+
+                &.selected {
+                    border: 1.5px solid var(--highlight);
+                    opacity: 1;
+                    border-radius: 5px;
+                }
             }
         }
 
@@ -26,7 +45,9 @@
             position: relative;
             border-top-left-radius: 8px;
             border-bottom-left-radius: 8px;
-            & img {}
+            & img {
+                width: 100%;
+            }
 
             & .floating {
                 display: flex;
@@ -58,24 +79,210 @@
     }
 
     & .contentsection {
-        background: #fff;
+        background: #2b2b2b;
         width:45%;
         height: 70vh;
         position: relative;
         border-radius: 8px;
+        flex: 1;
         & .h {
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: sticky;
             top: 0;
-            padding: .813rem 1.25rem;
+            padding: .75rem 1rem;
+            & .title {
+                display: flex;
+                align-items: start;
+                flex-direction: column;
+                gap: .5rem;
+                & .name {
+                    font-size: .875rem;
+                    font-weight: 600;
+                }
+                & .date {
+                    font-size: .75rem;
+                    font-weight: 500;
+                    color: var(--text-sub-secondary);
+                }
+            }
+
+            & .status {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                gap: .375rem;
+                background: #ffffff41;
+                padding: .25rem .5rem;
+                border-radius: 5px;
+                & i {
+                    font-size: 1rem;
+                    color: #fff;
+                }
+                & span {
+                    font-size: .65rem;
+                    font-weight: 600;
+                    color: #fff;
+                }
+                &.pending {
+                    background: #fd9d3041;
+                    & i {
+                        color: var(--pending);
+                    }
+                    & span {
+                        color: var(--pending);
+                    }
+                }
+            }
         }
-        & .c {}
+        & .c {
+            padding-top: .5rem;
+            & .chatroom {
+                padding: 0 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+                padding-bottom: 50px;
+                overflow: auto;
+                max-height: calc(80vh - 80px - 100px);
+                & .chatbox {
+                    background: #404040;
+                    border-radius: 4px;
+                    & .comm {
+                        padding: .5rem;
+                        & .date {
+                            padding-bottom: .75rem;
+                            color: var(--text-sub);
+                            font-weight: 600;
+                            font-size: .65rem;
+                        }
+                        & p {
+                            margin: 0;
+                            font-size: .75rem;
+                            font-weight: 500;
+                            text-transform: capitalize;
+                            margin-bottom: .25rem;
+                        }
+                    }
+                    & .actionbar {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 0.5rem .75rem;
+                        background: #2b2b2b7e;
+                       
+                        & .info {
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                            & span {
+                                font-size: .675rem;
+                                font-weight: 400;
+                                display: flex;
+                                align-items: center;
+                                gap: .375rem;
+                                & i {
+                                    color: var(--highlight);
+                                    font-size: .75rem;
+                                }
+                                & span {
+                                    font-weight: 600;
+                                }
+                            }
+                            & button {
+                                font-size: .75rem;
+                                font-weight: 400;
+                                display: flex;
+                                align-items: center;
+                                background: transparent;
+                                border: none;
+                                padding: 0;
+                                cursor: pointer;
+                                & i {
+                                    color: var(--text);
+                                    font-size: 1rem;
+                                }
+                                &:hover {
+                                    & i {
+                                        color: var(--text-sub);
+                                    }
+                                }
+                            }
+                        }
+                        & .user {
+                            margin-left: auto;
+                            display: flex;
+                            align-items: center;
+                            & div.thumbnail {
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                margin-right: -10px;
+                                border: 1.5px solid #1e1e1e;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                color: #fff;
+                                font-size: .5rem;
+                                text-transform: uppercase;
+                                font-weight: 500;
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+                            & img.thumbnail {
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                margin-right: -10px;
+                                border: 1.5px solid #1e1e1e;
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                & .chattype {
+                    display: flex;
+                    align-items: center;
+                    gap: .75rem;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    padding: .75rem;
+                    background: #404040;
+                    & input {
+                        flex: 1;
+                        background: transparent;
+                        outline: none;
+                        color: #fff;
+                    }
+                    & .btn_send {
+                        background: transparent;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                        & i {
+                            color: #fff;
+                            font-size: 1.5rem;
+                        }
+                        &:hover {
+                            & i {
+                                color: var(--text-sub);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     &:has(.view) {
-        width: 70vw;
+        width: 80vw;
         & .contentsection {
             border-top-left-radius: 0px;
             border-bottom-left-radius: 0px;

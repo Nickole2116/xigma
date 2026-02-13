@@ -33,6 +33,10 @@ Route::get('/admin/get_projects_init', [OrderController::class, 'getProjectInit'
 Route::get('/admin/get_all_categories', [OrderController::class, 'getAllCategories'])->name('get_categories');
 Route::post('/admin/create_project_item', [OrderController::class, 'createProjectItem'])->name('create_project_item');
 
+Route::get('/admin/get_all_pncs', [OrderController::class, 'getAllPNCs'])->name('get_pncs');
+Route::get('/admin/get_projects_completed', [OrderController::class, 'getAllProjectCompleted'])->name('get_completed_project');
+
+
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/me', fn (Request $request) => $request->user());

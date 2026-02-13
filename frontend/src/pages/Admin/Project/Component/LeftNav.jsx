@@ -57,6 +57,8 @@ const LeftNav = () => {
             <div className="sub-nav-header">
                 <i className="mdi mdi-star-four-points-circle"></i>
                 <span>{t('project')}</span>
+
+                <i className='mdi mdi-chevron-down ml-auto'></i>
             </div>
 
             <div className="sub-nav-sect">
@@ -98,6 +100,8 @@ const LeftNav = () => {
             <div className="sub-nav-header">
                 <i className="mdi mdi-shape-plus-outline"></i>
                 <span>{t('type')}</span>
+
+                <i className='mdi mdi-chevron-down ml-auto'></i>
             </div>
             <div className="sub-nav-sect">
                 {cat.map((ct) => <>

@@ -14,6 +14,21 @@
     "type": "分类",
     "masonry": "瀑布模式",
     "listrow": "条状模式",
-    "drop_here": "拖拽至此处"
+    "drop_here": "拖拽至此处",
+
+    "recent_chat_telegram": "聊天室 (Telegram)",
+    "send": "发送",
+    "related_pnc": "负责管理员",
+    "related_client": "关于客户",
+
+    "main": "主要",
+    "others": "其次",
+    "display_set": "显示设置",
+    "status_set": "状态设置",
+    "category_list": "分类",
+    "user_permission": "用户权限",
+    "logging_check": "用户动态",
+    "text_n_theme": "文字与主题",
+    "icon_card_setting": "显示设置（标志）"
 }
   

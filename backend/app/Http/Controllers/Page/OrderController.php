@@ -235,4 +235,22 @@ class OrderController extends Controller {
             ], 500);
         }
     }
+
+    public function getAllPNCs(Request $request) {
+        $cat = Admin::with('project')->get();
+        return response()->json([
+            'status' => 200,
+            'message' => 'PNCS listing fetched successfully',
+            'pncs' => $cat,
+        ]);
+    }
+    public function getAllProjectCompleted(Request $request) {
+        $project = Project::with('admin', 'user', 'category', 'items')->where('status', 5)->get();
+        return response()->json([
+            'status' => 200,
+            'message' => 'Product listing fetched successfully',
+            'project' => $project,
+        ]);
+    }
+    
 }

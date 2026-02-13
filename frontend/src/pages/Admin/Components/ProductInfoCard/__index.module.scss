@@ -255,6 +255,8 @@
                     width: 100%;
                     padding: .75rem;
                     background: #404040;
+                    border-bottom-left-radius: 8px;
+                    border-bottom-right-radius: 8px;
                     & input {
                         flex: 1;
                         background: transparent;

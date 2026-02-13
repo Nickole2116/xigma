@@ -32,3 +32,9 @@ export const getCategories = () => {
 export const createProjectItem = (payload) => {
   return api.post('/admin/create_project_item', payload)
 }
+export const getPNCs = () => {
+  return api.get('/admin/get_all_pncs');
+}
+export const getProjectsCompleted = () => {
+  return api.get('/admin/get_projects_completed');
+}

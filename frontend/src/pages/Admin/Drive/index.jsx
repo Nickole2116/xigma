@@ -5,6 +5,7 @@ import LeftNav from './Components/LeftNav.jsx';
 import TopSubNav from './Components/TopSubNav.jsx';
 import MansoryLayout from './Components/MansoryLayout.jsx';
 import RowLayout from './Components/RowLayout.jsx';
+import { getProjectsCompleted, getCategories, verifyToken } from "@/services/modules/admin.service";
 
 const Drive = () => {
 
@@ -30,6 +31,18 @@ const Drive = () => {
         isPageLoading, setIsPageLoading
     } = useGlobalStore();
     const [layout, setLayout] = useState('mansory');
+    const [projects, setProjects] = useState([]);
+
+
+    const getProjectListings = async () => {
+        const res = await getProjectsCompleted();
+        if (res.status === 200) {
+            console.log(res);
+            setProjects(res.project);
+        } else {
+            //error
+        }
+    }
 
     useEffect(() => {
         setTopNav(true);
@@ -37,9 +50,18 @@ const Drive = () => {
         setLeftNavCon(<LeftNav />);
         setTopSubNav(true);
         setTopSubNavCon(<TopSubNav layout={layout} setLayout={setLayout}/>);
+        getProjectListings();
+
     }, [layout])
     return <>
-        {layout == 'mansory' ? <MansoryLayout /> : <RowLayout />}
+        {/**  */}
+        {/** Mansory Layout */}
+        {layout == 'mansory' && <>
+            <MansoryLayout projects={projects}/>
+        </>}
+        {layout == 'row' && <>
+            <RowLayout projects={projects}/>
+        </>}
     </>;
 }
 

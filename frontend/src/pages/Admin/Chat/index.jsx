@@ -6,8 +6,10 @@ import { CommentInput } from '@/pages/Shared';
 
 // import content
 import LeftNav from "./Component/LeftNav";
+import { useTranslation } from 'react-i18next';
 
 const Chat = () => {
+    const { t } = useTranslation();
     const { theme, setTheme,
         isLogined, setIsLogined, 
         themeMode, setThemeMode,
@@ -33,6 +35,7 @@ const Chat = () => {
     useEffect(() => {
         setTopNav(true);
         setLeftNav(true);
+        setTopSubNav(false);
         setLeftNavCon(<LeftNav />);
     }, []);
 
@@ -88,11 +91,14 @@ const Chat = () => {
             <button className="btn-add">
                 <i className="mdi mdi-plus-thick"></i>
             </button>
-            <button className="btn-add">
-                <i className="mdi mdi-plus-thick"></i>
+            <button className="btn-icon">
+                <i className="mdi mdi-emoticon-outline"></i>
             </button>
             <CommentInput />
-            <button className="btn-send">Send</button>
+            <button className="btn-send">
+                <span>{t('send')}</span>
+                <i className='mdi mdi-send'></i>
+            </button>
         </section>
     </>;
 }

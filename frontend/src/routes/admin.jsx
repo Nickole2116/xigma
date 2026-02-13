@@ -16,7 +16,7 @@ const adminRoutes = {
         { path: 'chat', element: <Chat/> },
         { path: 'drive', element: <Drive /> },
         { path: 'project', element: <Project/> },
-        { path: 'general-setting', element: <GeneralSetting /> },
+        { path: 'general-setting/:type?', element: <GeneralSetting /> },
         { path: 'theme', element: <Theme /> },
 
         //{ path: '/products', element: <Products /> },

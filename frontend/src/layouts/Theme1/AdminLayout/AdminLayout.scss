@@ -57,6 +57,7 @@ $topnav-height: 80px;
                         height: 50px;
                         position: sticky;
                         top: 0;
+                        z-index: 20;
                     }
                     & > .outlet {
                         overflow: auto;

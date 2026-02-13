@@ -1,0 +1,17 @@
+.empty-project {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 2rem 0;
+    & i {
+        font-size: 4rem;
+        color: var(--text-sub-secondary);
+    }
+    & .lbl {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-sub-secondary);
+    }
+}

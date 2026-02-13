@@ -20,5 +20,11 @@ class Admin extends Model
         'remember_token' => 'hashed',
     ];
 
+    public function project()
+    {
+        return $this->hasMany(Project::class, 'admin_id', 'id');
+    }
+
+
     
 }

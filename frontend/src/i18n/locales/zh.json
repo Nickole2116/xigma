@@ -16,7 +16,8 @@
     "listrow": "条状模式",
     "drop_here": "拖拽至此处",
 
-    "recent_chat_telegram": "聊天室 (Telegram)",
+    "recent_chat_telegram_private": "聊天室 (个人)",
+    "recent_chat_telegram_team": "聊天室 (团队)",
     "send": "发送",
     "related_pnc": "负责管理员",
     "related_client": "关于客户",
@@ -29,6 +30,8 @@
     "user_permission": "用户权限",
     "logging_check": "用户动态",
     "text_n_theme": "文字与主题",
-    "icon_card_setting": "显示设置（标志）"
+    "icon_card_setting": "显示设置（标志）",
+
+    "older_message_need_explore_outside": "旧信息需前往Telegram软件进行查看"
 }
   

@@ -1,8 +1,9 @@
 import './__index.scss';
 import { useGlobalStore } from "@/hooks/GlobalStore.context";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CommentInput } from '@/pages/Shared';
-
+import { getTelegramProfile, getTelegramUpdates, loginTelegramClient, getTelegramDialogs } from "@/services/modules/telegramclient.service";
+import { QRCodeCanvas } from "qrcode.react";
 
 // import content
 import LeftNav from "./Component/LeftNav";
@@ -32,74 +33,119 @@ const Chat = () => {
         isPageLoading, setIsPageLoading
     } = useGlobalStore();
 
+    const [loginQRDisplay, setLoginQRDisplay] = useState(false);
+    const [loginQR, setLoginQR] = useState(null);
+    const [dialogList, setDialogsList] = useState([]);
+    const [teamList, setTeamList] = useState([]);
+    //const [peer, setPeer] = useState(null);
+
     useEffect(() => {
+        loadTelegram();
         setTopNav(true);
-        setLeftNav(true);
+        setLeftNav(!loginQRDisplay);
         setTopSubNav(false);
-        setLeftNavCon(<LeftNav />);
-    }, []);
+        setLeftNavCon(<LeftNav dialog={dialogList} team={teamList} />);
+        
+    }, [loginQRDisplay, dialogList]);
+
+    const syncTelegramHistory = async () => {
+        const data = await getTelegramDialogs()
+        console.log(data);
+        setDialogsList(data.users);
+        setTeamList(data.chats);
+    }
+
+    const loadTelegram = async () => {
+      const data = await loginTelegramClient()
+      if (!data.isLogined) {
+        setLoginQRDisplay(true);
+        setLoginQR(data.requestQR);
+      } else {
+        setLoginQRDisplay(false);
+        // view history
+        syncTelegramHistory();
+      }
+    }
 
 
 
     return <>
-        <section className='chat-board'>
-            {/** Reminder Date */}
-            <div className="created-date">
-                <div className='line'></div>
-                <span className>20 September 2025, 18:25</span>
-                <div className='line'></div>
-            </div>
-
-            {/** Reminder Text */}
-            <div className="reminder">
-                <span className>Older Messages need to be explore in Telegram App</span>
-            </div>
-            <div className="row">
-                <div className="chat">
-                    <div className="thumbnail">
-                        <img src="https://picsum.photos/200" alt="commentimage" />
-                    </div>
-                    <p className="text">Hi, this is Stacey. Can you have to follow up on this case?</p>
-                    <small className="date">
-                        Today, 00:10
-                    </small>
+        {loginQRDisplay ? <>
+            <section className='chat-board-login'>
+                <div className='qrbox'>
+                    <QRCodeCanvas
+                        value={loginQR}
+                        size={150}
+                        bgColor="#ffffff"
+                        fgColor="#000000"
+                        level="H"
+                    />
+                </div>
+            </section>
+            
+        
+        </> : <>
+            <section className='chat-board'>
+        
+                {/** Reminder Date */}
+                <div className="created-date">
+                    <div className='line'></div>
+                    <span className>20 September 2025, 18:25 {loginQR}</span>
+                    <div className='line'></div>
                 </div>
 
-                <div className="chat me">
-                    <div className="thumbnail">
-                        <img src="https://picsum.photos/200" alt="commentimage" />
-                    </div>
-                    <p className="text">Hi, this is Stacey. Can you have to follow up on this case?</p>
-                    <small className="date">
-                        Today, 00:10
-                    </small>
+                {/** Reminder Text */}
+                <div className="reminder">
+                    <span className>{t('older_message_need_explore_outside')}</span>
                 </div>
-
-                <div className="chat">
-                    <div className="thumbnail">
-                        <img src="https://picsum.photos/200" alt="commentimage" />
+                <div className="row">
+                    <div className="chat">
+                        <div className="thumbnail">
+                            <img src="https://picsum.photos/200" alt="commentimage" />
+                        </div>
+                        <p className="text">Hi, this is Stacey. Can you have to follow up on this case?</p>
+                        <small className="date">
+                            Today, 00:10
+                        </small>
                     </div>
-                    <p className="text">Hi, this is Stacey. Can you have to follow up on this case?</p>
-                    <small className="date">
-                        Today, 00:10
-                    </small>
-                </div>
-            </div>
-        </section>
 
-        <section className="chat-texting">
-            <button className="btn-add">
-                <i className="mdi mdi-plus-thick"></i>
-            </button>
-            <button className="btn-icon">
-                <i className="mdi mdi-emoticon-outline"></i>
-            </button>
-            <CommentInput />
-            <button className="btn-send">
-                <span>{t('send')}</span>
-                <i className='mdi mdi-send'></i>
-            </button>
-        </section>
+                    <div className="chat me">
+                        <div className="thumbnail">
+                            <img src="https://picsum.photos/200" alt="commentimage" />
+                        </div>
+                        <p className="text">Hi, this is Stacey. Can you have to follow up on this case?</p>
+                        <small className="date">
+                            Today, 00:10
+                        </small>
+                    </div>
+
+                    <div className="chat">
+                        <div className="thumbnail">
+                            <img src="https://picsum.photos/200" alt="commentimage" />
+                        </div>
+                        <p className="text">Hi, this is Stacey. Can you have to follow up on this case?</p>
+                        <small className="date">
+                            Today, 00:10
+                        </small>
+                    </div>
+                </div>
+            </section>
+
+            <section className="chat-texting">
+                <button className="btn-add">
+                    <i className="mdi mdi-plus-thick"></i>
+                </button>
+                <button className="btn-icon">
+                    <i className="mdi mdi-emoticon-outline"></i>
+                </button>
+                <CommentInput />
+                <button className="btn-send">
+                    <span>{t('send')}</span>
+                    <i className='mdi mdi-send'></i>
+                </button>
+            </section>
+        </>}
+        
     </>;
 }
 

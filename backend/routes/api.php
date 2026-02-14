@@ -16,6 +16,7 @@ Route::post('/telegram/client/login', [TelegramClientController::class, 'login']
 Route::get('/telegram/client/login', [TelegramClientController::class, 'login']);
 Route::post('/telegram/client/send', [TelegramClientController::class, 'send']);
 Route::get('/telegram/client/history', [TelegramClientController::class, 'history']);
+Route::get('/telegram/client/dialogs', [TelegramClientController::class, 'dialogs']);
 Route::get('/telegram/client/me', [TelegramClientController::class, 'me']);
 
 

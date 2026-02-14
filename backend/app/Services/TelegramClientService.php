@@ -54,9 +54,11 @@ class TelegramClientService
 
         $qr = $this->client->qrLogin();
 
-        return [
-            'link' => $qr->link
-        ];
+            return [
+                'link' => $qr->link ?? null
+            ];
+
+        
     }
 
     /**
@@ -82,6 +84,18 @@ class TelegramClientService
         return $this->client->messages->getHistory([
             'peer'  => $peer,
             'limit'=> $limit,
+        ]);
+    }
+
+    /**
+     * 获取最近消息的聊天格
+     */
+    public function getDialogs(int $limit = 20)
+    {
+        $this->client->start();
+
+        return $this->client->messages->getDialogs([
+            'limit'=> $limit
         ]);
     }
 

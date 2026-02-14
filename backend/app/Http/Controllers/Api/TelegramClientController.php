@@ -18,10 +18,22 @@ class TelegramClientController extends Controller
     public function login(Request $request) {
         
             $qr = $this->telegram->telegramLogin();
-            return response()->json([
-                'isLogined' => false,
-                'requestQR' => $qr['link']
-            ]);
+            if($qr['link'] !== null) {
+                return response()->json([
+                    'isLogined' => false,
+                    'requestQR' => $qr['link'] ?? null
+                ]);
+            } else {
+                //sync chat history 
+                $info = $this->telegram->getMe();
+                return response()->json([
+                    'isLogined' => true,
+                    'info' => [
+                        'username' => $info['username']
+                    ]
+                ]);
+            }
+            
         
     }
 
@@ -32,6 +44,13 @@ class TelegramClientController extends Controller
                 $request->peer,
                 $request->message
             )
+        );
+    }
+
+    public function dialogs(Request $request)
+    {
+        return response()->json(
+            $this->telegram->getDialogs()
         );
     }
 
